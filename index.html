@@ -2047,9 +2047,7 @@
     <div class="expert-inner">
       <div class="expert-photo-wrap">
         <div class="expert-photo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-          </svg>
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=360&h=360&q=85&auto=format&fit=crop&crop=face" alt="Dr. Rachel Chen, MD" style="width:100%;height:100%;object-fit:cover;display:block;" />
         </div>
         <div>
           <div class="expert-name">Dr. Rachel Chen, MD</div>
@@ -2372,7 +2370,7 @@
       <div style="display:flex;align-items:center;gap:14px;">
         <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" style="width:44px;height:44px;border-radius:3px;object-fit:cover;background:var(--cream-light);" />
         <div>
-          <div style="font-size:14px;font-weight:700;color:var(--black);">NutraHarmony® 25-in-1 Menopause</div>
+          <div id="stickyTitle" style="font-size:14px;font-weight:700;color:var(--black);">NutraHarmony® 25-in-1 Menopause</div>
           <div style="font-size:13px;color:var(--gray);" id="stickyPrice">$35.95 / mo · Subscribe &amp; Save</div>
         </div>
       </div>
@@ -2552,6 +2550,8 @@
           intensified = true;
           bar.style.background = '#1a0000';
           bar.style.borderTop = '2px solid var(--red)';
+          const titleEl = document.getElementById('stickyTitle');
+          if (titleEl) titleEl.style.color = 'var(--white)';
           const priceEl = document.getElementById('stickyPrice');
           if (priceEl) {
             const liveStock = document.getElementById('stockCount');
@@ -2564,6 +2564,8 @@
           intensified = false;
           bar.style.background = 'var(--white)';
           bar.style.borderTop = '1px solid var(--border)';
+          const titleEl = document.getElementById('stickyTitle');
+          if (titleEl) titleEl.style.color = 'var(--black)';
           const priceEl = document.getElementById('stickyPrice');
           if (priceEl) priceEl.innerHTML = '$35.95 / mo · Subscribe &amp; Save';
           const btn = bar.querySelector('button');
