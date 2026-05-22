@@ -494,13 +494,10 @@
       color: var(--black);
       margin-bottom: 10px;
     }
-    .bundle-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .bundle-pills { display: flex; flex-wrap: nowrap; gap: 10px; }
     .bundle-pill {
       border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 20px 10px;
-      font-size: 14px;
-      font-weight: 600;
+      border-radius: 12px;
       cursor: pointer;
       transition: all 0.15s;
       position: relative;
@@ -509,16 +506,43 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-      min-width: 110px;
+      flex: 1;
+      min-width: 0;
       text-align: center;
+      overflow: hidden;
+      padding: 0 0 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .bundle-pill-imgs {
+      width: 100%;
+      background: var(--cream-light);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 10px 6px 6px;
+      min-height: 88px;
+    }
+    .bundle-pill-imgs img {
+      width: 36px;
+      height: auto;
+      object-fit: contain;
+      margin: 0 -5px;
+      filter: drop-shadow(1px 3px 5px rgba(0,0,0,0.18));
+    }
+    .bundle-pill-info {
+      padding: 8px 8px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
     }
     .bundle-pill:hover { border-color: #999; }
     .bundle-pill.active {
-      background: var(--black);
-      color: var(--white);
       border-color: var(--black);
+      border-width: 2px;
     }
+    .bundle-pill.active .bundle-pill-imgs { background: var(--cream-warm); }
     .pill-badge {
       font-size: 10px;
       font-weight: 700;
@@ -529,7 +553,7 @@
       letter-spacing: 0.03em;
       line-height: 1.4;
     }
-    .bundle-pill.active .pill-badge { background: rgba(255,255,255,0.2); color: var(--white); }
+    .bundle-pill.active .pill-badge { background: var(--gold); color: var(--white); }
     .bundle-stock-tag {
       font-size: 10px;
       font-weight: 700;
@@ -540,13 +564,13 @@
     .bundle-stock-tag.low {
       background: var(--red);
       color: var(--white);
-      padding: 3px 10px;
+      padding: 3px 8px;
       border-radius: 20px;
-      font-size: 11px;
+      font-size: 10px;
       animation: pulse 1.6s ease infinite;
     }
     .bundle-pill.low-stock { border-color: #FFB3B3; border-width: 2px; }
-    .bundle-pill.active.low-stock { border-color: var(--black); border-width: 1.5px; }
+    .bundle-pill.active.low-stock { border-color: var(--black); border-width: 2px; }
 
     /* ATC Button */
     .atc-btn {
@@ -1036,7 +1060,9 @@
     @media (max-width: 480px) {
       .product-title { font-size: 26px; }
       .reviews-grid { grid-template-columns: 1fr; }
-      .bundle-pill { padding: 7px 14px; font-size: 13px; }
+      .bundle-pill { font-size: 12px; }
+      .bundle-pill-imgs { min-height: 72px; }
+      .bundle-pill-imgs img { width: 28px; }
       .feature-heading { font-size: 26px; }
       .footer-grid { grid-template-columns: 1fr; }
       .expert-photo-wrap { flex-direction: column; }
@@ -1477,6 +1503,46 @@
         For hot flashes, night sweats, mood swings, sleep disturbances, low energy &amp; brain fog. Suitable for all stages of menopause.
       </p>
 
+      <!-- Bundle Selector -->
+      <div class="bundle-section">
+        <div class="bundle-label">Package Supply</div>
+        <p class="qty-limit-badge">⚡ Limit 3 per customer - high demand restriction in effect</p>
+        <div class="bundle-pills">
+          <button class="bundle-pill" onclick="selectBundle(this, 1)">
+            <div class="bundle-pill-imgs">
+              <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" alt="1 bottle">
+            </div>
+            <div class="bundle-pill-info">
+              1 Bottle
+              <span class="bundle-stock-tag ok">14 left</span>
+            </div>
+          </button>
+          <button class="bundle-pill active low-stock" onclick="selectBundle(this, 2)">
+            <div class="bundle-pill-imgs">
+              <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" alt="bottle">
+              <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" alt="bottle">
+            </div>
+            <div class="bundle-pill-info">
+              2 Bottles
+              <span class="pill-badge">Most Popular</span>
+              <span class="bundle-stock-tag low">⚠ Only 4 left</span>
+            </div>
+          </button>
+          <button class="bundle-pill" onclick="selectBundle(this, 3)">
+            <div class="bundle-pill-imgs">
+              <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" alt="bottle">
+              <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" alt="bottle">
+              <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" alt="bottle">
+            </div>
+            <div class="bundle-pill-info">
+              3 Bottles
+              <span class="pill-badge">Best Value</span>
+              <span class="bundle-stock-tag ok">11 left</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
       <!-- Purchase Options -->
       <div class="purchase-options">
         <!-- Subscribe -->
@@ -1526,17 +1592,6 @@
               <div class="option-price">$39.94</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Bundle Selector -->
-      <div class="bundle-section">
-        <div class="bundle-label">Package Supply</div>
-        <p class="qty-limit-badge">⚡ Limit 3 per customer - high demand restriction in effect</p>
-        <div class="bundle-pills">
-          <button class="bundle-pill" onclick="selectBundle(this, 1)">1 Bottle<span class="bundle-stock-tag ok">14 left</span></button>
-          <button class="bundle-pill active low-stock" onclick="selectBundle(this, 2)">2 Bottles<span class="pill-badge">Most Popular</span><span class="bundle-stock-tag low">⚠ Only 4 left</span></button>
-          <button class="bundle-pill" onclick="selectBundle(this, 3)">3 Bottles<span class="pill-badge">Best Value</span><span class="bundle-stock-tag ok">11 left</span></button>
         </div>
       </div>
 
