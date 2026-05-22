@@ -870,38 +870,47 @@
     .bundle-tip strong { color: var(--green); }
 
     /* ── Body Infographic ── */
-    .body-infographic {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/5;
-      background: var(--cream-warm);
-      border-radius: 6px;
+    /* ── Ingredient Circles ── */
+    .ingredient-circles {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px 6px;
       justify-content: center;
+      align-content: flex-start;
+      padding: 4px 0;
     }
-    .bi-inner { position: relative; width: 80%; height: 85%; }
-    .bi-svg { width: 40%; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
-    .bi-svg svg { width: 100%; height: 100%; }
-    .bi-label {
-      position: absolute;
+    .ingr-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 6px;
-      font-size: 11px;
+      text-align: center;
+      gap: 7px;
+      width: calc(33.33% - 6px);
+      min-width: 80px;
     }
-    .bi-label.left { flex-direction: row; left: 0; }
-    .bi-label.right { flex-direction: row-reverse; right: 0; }
-    .bi-tag { background: var(--black); color: var(--white); padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; white-space: nowrap; }
-    .bi-line { flex: 1; height: 1px; background: rgba(0,0,0,0.25); min-width: 20px; }
-    .bi-lbl-chest  { top: 18%; width: 48%; }
-    .bi-lbl-arms   { top: 36%; width: 48%; }
-    .bi-lbl-tummy  { top: 55%; width: 48%; }
-    .bi-lbl-thighs { top: 72%; width: 48%; }
-    .body-infographic::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 42%; background: linear-gradient(to top, rgba(0,0,0,0.52) 0%, transparent 100%); pointer-events: none; border-radius: 0 0 6px 6px; }
-    .bi-benefits { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 12px; z-index: 2; }
-    .bi-benefit { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 6px; padding: 8px 10px; font-size: 11px; font-weight: 700; color: var(--white); display: flex; align-items: center; gap: 6px; }
-    .bi-benefit svg { width: 14px; height: 14px; color: var(--white); flex-shrink: 0; }
+    .ingr-img {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2.5px solid var(--gold);
+      flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+      transition: transform 0.18s;
+    }
+    .ingr-img:hover { transform: scale(1.06); }
+    .ingr-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ingr-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.25;
+    }
+    .ingr-act {
+      font-size: 10px;
+      color: var(--gray);
+      line-height: 1.3;
+    }
 
     /* ── Testimonial Photo Card ── */
     .amber-testimonial {
@@ -1032,7 +1041,7 @@
       .feature-section.reverse .feature-inner { direction: ltr; }
       .feature-inner { grid-template-columns: 1fr; gap: 36px; }
       .feature-heading { font-size: 32px; }
-      .body-infographic { aspect-ratio: 1; }
+      .ingr-img { width: 68px; height: 68px; }
       .amber-testimonial { aspect-ratio: auto; min-height: 340px; }
       .amber-quote { font-size: 18px; }
       .trust-badges-inner { grid-template-columns: 1fr; gap: 24px; }
@@ -1753,14 +1762,42 @@
           Each ingredient is chosen for its targeted benefits: helping to ease hormonal discomfort, support mood stability, boost vitality, and gently support hormonal balance from within. No fluff - just real support for real women.
         </p>
       </div>
-      <!-- Body Infographic -->
-      <div class="body-infographic">
-        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/711C0jLwkaL._AC_SL1500.jpg?v=1764179982" alt="Specially Made For Her - NutraHarmony Menopause Supplement" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        <div class="bi-benefits">
-          <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hot flash relief</div>
-          <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Mood balance</div>
-          <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Gut support</div>
-          <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Energy boost</div>
+      <!-- Ingredient Circles -->
+      <div class="ingredient-circles">
+        <div class="ingr-item">
+          <div class="ingr-img"><img src="https://images.unsplash.com/photo-1611695268591-5c5ae3e55e9d?w=160&h=160&q=85&auto=format&fit=crop" alt="Black Cohosh" /></div>
+          <div class="ingr-name">Black Cohosh</div>
+          <div class="ingr-act">Eases hot flashes</div>
+        </div>
+        <div class="ingr-item">
+          <div class="ingr-img"><img src="https://images.unsplash.com/photo-1596470863530-f5efb58de17e?w=160&h=160&q=85&auto=format&fit=crop" alt="Ashwagandha" /></div>
+          <div class="ingr-name">Ashwagandha</div>
+          <div class="ingr-act">Stress & mood support</div>
+        </div>
+        <div class="ingr-item">
+          <div class="ingr-img"><img src="https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?w=160&h=160&q=85&auto=format&fit=crop" alt="Maca Root" /></div>
+          <div class="ingr-name">Maca Root</div>
+          <div class="ingr-act">Energy & vitality</div>
+        </div>
+        <div class="ingr-item">
+          <div class="ingr-img"><img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=160&h=160&q=85&auto=format&fit=crop" alt="Probiotics" /></div>
+          <div class="ingr-name">MAKTREK® Probiotics</div>
+          <div class="ingr-act">Gut & microbiome</div>
+        </div>
+        <div class="ingr-item">
+          <div class="ingr-img"><img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?w=160&h=160&q=85&auto=format&fit=crop" alt="Red Clover" /></div>
+          <div class="ingr-name">Red Clover</div>
+          <div class="ingr-act">Hormonal balance</div>
+        </div>
+        <div class="ingr-item">
+          <div class="ingr-img"><img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=160&h=160&q=85&auto=format&fit=crop" alt="Dong Quai" /></div>
+          <div class="ingr-name">Dong Quai</div>
+          <div class="ingr-act">Women's herb tonic</div>
+        </div>
+        <div class="ingr-item">
+          <div class="ingr-img"><img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=160&h=160&q=85&auto=format&fit=crop" alt="Chasteberry" /></div>
+          <div class="ingr-name">Chasteberry</div>
+          <div class="ingr-act">Mood stability</div>
         </div>
       </div>
     </div>
