@@ -1,0 +1,2618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menopause Supplement for Women — NutraHarmony</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Variables ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:        #0B0B0B;
+      --white:        #FFFFFF;
+      --cream-light:  #FAF8F3;
+      --cream-warm:   #F0E9DA;
+      --green:        #007F4E;
+      --gold:         #C4A83B;
+      --red:          #D02E2E;
+      --pink:         #F3CBCB;
+      --gray:         #555555;
+      --gray-light:   #F0F0F0;
+      --border:       #E0E0E0;
+      --serif:        'Playfair Display', Georgia, serif;
+      --sans:         'Cabin', Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: var(--sans);
+      color: var(--black);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    /* Prevent grid/flex children from blowing out their containers */
+    .hero > *, .feature-inner > *, .footer-grid > * { min-width: 0; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: var(--sans); }
+
+    /* ── Announcement Bar (Rotating) ── */
+    .announcement-bar {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 40px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      position: relative;
+      overflow: hidden;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ann-slide {
+      position: absolute;
+      left: 0; right: 0;
+      text-align: center;
+      padding: 0 40px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .ann-slide.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .ann-slide .ann-hot { color: #FF6B6B; font-weight: 700; }
+    .ann-slide .ann-gold { color: var(--cream-warm); font-weight: 700; }
+    .ann-close { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(255,255,255,0.6); font-size: 18px; line-height: 1; cursor: pointer; z-index: 2; }
+    .ann-close:hover { color: var(--white); }
+
+    /* ── Scarcity Elements ── */
+    .scarcity-stock-wrap {
+      background: #FFF5F5;
+      border: 1px solid #FFD0D0;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .scarcity-stock-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .scarcity-stock-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .scarcity-stock-label .pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--red);
+      animation: pulse 1.4s ease infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+    .scarcity-stock-count { font-size: 12px; color: var(--gray); }
+    .stock-bar-track {
+      height: 6px; background: #FFD0D0; border-radius: 3px; overflow: hidden;
+    }
+    .stock-bar-fill {
+      height: 100%; background: var(--red); border-radius: 3px;
+      transition: width 1s ease;
+    }
+
+    .scarcity-timers {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .scarcity-timer-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--black);
+    }
+    .scarcity-timer-row svg { flex-shrink: 0; color: var(--gold); }
+    .scarcity-timer-row strong { color: var(--black); }
+    .countdown-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.03em;
+    }
+    .shipping-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .live-counts-row {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .live-count-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--gray);
+      background: var(--cream-light);
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .live-count-chip .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse 1.8s ease infinite;
+    }
+    .live-count-chip strong { color: var(--black); }
+
+    .bundle-stock-tag {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 2px;
+      letter-spacing: 0.02em;
+    }
+    .bundle-stock-tag.low { color: var(--red); }
+    .bundle-stock-tag.ok  { color: var(--green); }
+
+    /* ── Navigation ── */
+    .nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { opacity: 0.6; }
+    .nav-logo {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-icons {
+      display: flex;
+      gap: 20px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .nav-icons button, .nav-icons a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-icons svg { width: 20px; height: 20px; }
+
+    /* ── Hero Section ── */
+    .hero {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 50px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Gallery */
+    .gallery { position: sticky; top: 90px; }
+    .gallery-main {
+      position: relative;
+      background: #F9F6EF;
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .gallery-main img.active { display: block; }
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      cursor: pointer;
+      border: none;
+      z-index: 2;
+    }
+    .gallery-arrow.prev { left: 12px; }
+    .gallery-arrow.next { right: 12px; }
+    .gallery-arrow svg { width: 16px; height: 16px; }
+    .gallery-thumbs {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .gallery-thumbs::-webkit-scrollbar { height: 4px; }
+    .gallery-thumbs::-webkit-scrollbar-track { background: var(--gray-light); }
+    .gallery-thumbs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .gallery-thumb {
+      flex: 0 0 80px;
+      height: 80px;
+      border-radius: 3px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .gallery-thumb.active { border-color: var(--black); }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Purchase Form */
+    .purchase-form { padding-top: 4px; }
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .stars { display: flex; gap: 2px; }
+    .stars svg { width: 16px; height: 16px; fill: #FFB800; }
+    .review-count {
+      font-size: 13px;
+      color: var(--gray);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .product-subtitle {
+      font-size: 14px;
+      color: var(--gray);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .product-title {
+      font-family: var(--serif);
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .price-current { font-size: 22px; font-weight: 700; color: var(--black); }
+    .price-compare { font-size: 16px; color: var(--gray); text-decoration: line-through; }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--pink);
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .trust-line {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-line span { font-weight: 600; color: var(--black); }
+    .callout-box {
+      border: 1.5px solid var(--gold);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 14px;
+      background: rgba(196,168,59,0.06);
+    }
+    .callout-box a { color: var(--gold); font-weight: 600; }
+    .urgency-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .urgency-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .urgency-text strong { color: var(--red); }
+    .product-tagline {
+      font-style: italic;
+      font-size: 15px;
+      color: var(--black);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Purchase Options */
+    .purchase-options { margin-bottom: 18px; }
+    .purchase-option {
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+      position: relative;
+    }
+    .purchase-option.selected { border-color: var(--black); }
+    .purchase-option-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .radio-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s;
+    }
+    .purchase-option.selected .radio-dot { border-color: var(--green); }
+    .radio-inner {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+      display: none;
+    }
+    .purchase-option.selected .radio-inner { display: block; }
+    .option-label {
+      font-size: 15px;
+      font-weight: 600;
+      flex: 1;
+    }
+    .option-price-wrap { text-align: right; }
+    .option-price { font-size: 16px; font-weight: 700; }
+    .option-compare { font-size: 13px; color: var(--gray); text-decoration: line-through; }
+    .save-tag {
+      position: absolute;
+      top: -10px;
+      right: 14px;
+      background: var(--pink);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 10px;
+    }
+    .option-benefits {
+      margin-top: 12px;
+      padding-left: 32px;
+      display: none;
+    }
+    .purchase-option.selected .option-benefits { display: block; }
+    .option-benefit {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+    .option-benefit svg { width: 16px; height: 16px; color: var(--green); flex-shrink: 0; }
+    .deliver-selector {
+      margin-top: 12px;
+      padding-left: 32px;
+    }
+    .deliver-label { font-size: 12px; color: var(--gray); margin-bottom: 6px; }
+    .deliver-btn {
+      background: var(--green);
+      color: var(--white);
+      border-radius: 4px;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Bundle Selector */
+    .bundle-section { margin-bottom: 20px; }
+    .bundle-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .bundle-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .bundle-pill {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 20px 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+      background: var(--white);
+      color: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      min-width: 110px;
+      text-align: center;
+    }
+    .bundle-pill:hover { border-color: #999; }
+    .bundle-pill.active {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+    .pill-badge {
+      font-size: 10px;
+      font-weight: 700;
+      background: var(--gold);
+      color: var(--white);
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+      line-height: 1.4;
+    }
+    .bundle-pill.active .pill-badge { background: rgba(255,255,255,0.2); color: var(--white); }
+    .bundle-stock-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1;
+    }
+    .bundle-stock-tag.ok  { color: var(--green); }
+    .bundle-stock-tag.low {
+      background: var(--red);
+      color: var(--white);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      animation: pulse 1.6s ease infinite;
+    }
+    .bundle-pill.low-stock { border-color: #FFB3B3; border-width: 2px; }
+    .bundle-pill.active.low-stock { border-color: var(--black); border-width: 1.5px; }
+
+    /* ATC Button */
+    .atc-btn {
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 18px;
+      border-radius: 3px;
+      margin-bottom: 12px;
+      transition: opacity 0.15s;
+    }
+    .atc-btn:hover { background: #2a2a2a; }
+    .secure-trust {
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 28px;
+    }
+    .secure-trust svg { width: 14px; height: 14px; }
+
+    /* Ingredients */
+    .ingredients-section { border-top: 1px solid var(--border); padding-top: 24px; }
+    .ingredients-heading {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 16px;
+      color: var(--black);
+      line-height: 1.4;
+    }
+    .ingredients-list { list-style: none; margin-bottom: 18px; }
+    .ingredients-list li {
+      padding: 7px 0;
+      font-size: 14px;
+      color: var(--black);
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+    }
+    .ingredients-list li::before {
+      content: '•';
+      color: var(--gold);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .ingredient-name { font-weight: 600; }
+    .ingredient-benefit { color: var(--gray); }
+    .ingredients-copy { font-size: 14px; color: var(--gray); margin-bottom: 20px; line-height: 1.7; }
+
+    /* Accordion */
+    .accordion { border-top: 1px solid var(--border); }
+    .accordion-item { border-bottom: 1px solid var(--border); }
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: left;
+      color: var(--black);
+      cursor: pointer;
+    }
+    .accordion-trigger svg {
+      width: 18px; height: 18px;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .accordion-trigger.open svg { transform: rotate(180deg); }
+    .accordion-content {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding-bottom 0.3s;
+    }
+    .accordion-content.open { max-height: 400px; padding-bottom: 16px; }
+
+    /* ── Feature Sections ── */
+    .feature-section {
+      background: var(--cream-light);
+      padding: 80px 60px;
+    }
+    .feature-section:nth-child(even) { background: var(--cream-warm); }
+    .feature-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .feature-section.reverse .feature-inner { direction: rtl; }
+    .feature-section.reverse .feature-inner > * { direction: ltr; }
+    .feature-text {}
+    .feature-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .feature-heading {
+      font-family: var(--serif);
+      font-size: 44px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+    .feature-body {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .feature-stat {
+      font-family: var(--serif);
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .feature-stat-label { font-size: 14px; color: var(--gray); letter-spacing: 0.04em; }
+    .feature-img-wrap {
+      border-radius: 6px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: #EDE9DF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feature-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .feature-img-wrap.product-bg {
+      background: var(--cream-warm);
+      padding: 40px;
+    }
+    .feature-img-wrap.product-bg img { object-fit: contain; }
+
+    /* ── Trust Badges ── */
+    .trust-badges-section {
+      padding: 60px 40px;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .trust-badges-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .trust-badge {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .trust-badge-icon {
+      width: 52px;
+      height: 52px;
+      color: var(--gold);
+    }
+    .trust-badge-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: 0.02em;
+    }
+    .trust-badge-sub { font-size: 12px; color: var(--gray); }
+
+    /* ── Reviews ── */
+    .reviews-section {
+      padding: 80px 40px;
+      background: var(--white);
+    }
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .reviews-header h2 {
+      font-family: var(--serif);
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .reviews-aggregate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--gray);
+    }
+    .reviews-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .review-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: var(--cream-light);
+    }
+    .review-img-placeholder {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, var(--cream-warm) 0%, var(--cream-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .review-img-placeholder svg { width: 40px; height: 40px; opacity: 0.3; }
+    .review-body { padding: 14px; }
+    .review-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .reviewer-name { font-size: 14px; font-weight: 700; }
+    .verified-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--green);
+      font-weight: 600;
+    }
+    .verified-badge svg { width: 12px; height: 12px; }
+    .review-date { font-size: 11px; color: var(--gray); margin-bottom: 6px; }
+    .review-stars { display: flex; gap: 2px; margin-bottom: 8px; }
+    .review-stars svg { width: 13px; height: 13px; fill: #FFB800; }
+    .review-text { font-size: 13px; color: var(--black); line-height: 1.6; }
+
+    /* ── Trustpilot Carousel ── */
+    .tp-carousel-wrap {
+      background: var(--cream-light);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+    .tp-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .tp-score { font-size: 12px; color: var(--gray); }
+    .tp-slide { display: none; font-size: 13px; line-height: 1.55; color: var(--black); }
+    .tp-slide.active { display: block; }
+    .tp-slide-reviewer { font-weight: 700; font-size: 12px; color: var(--gray); margin-top: 6px; }
+    .tp-dots { display: flex; gap: 6px; justify-content: center; margin-top: 10px; }
+    .tp-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s; }
+    .tp-dot.active { background: #00b67a; }
+
+    /* ── Buy It With ── */
+    .buy-with-card {
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      margin-top: 24px;
+      background: var(--cream-light);
+    }
+    .buy-with-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
+    .buy-with-row { display: flex; align-items: center; gap: 12px; }
+    .buy-with-img { width: 80px; height: 80px; border-radius: 4px; background: var(--cream-warm); flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .buy-with-img img { width: 100%; height: 100%; object-fit: cover; }
+    .buy-with-info { flex: 1; }
+    .buy-with-name { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 2px; }
+    .buy-with-price { font-size: 12px; color: var(--gray); }
+    .buy-with-btn { background: var(--black); color: var(--white); font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 14px; border-radius: 3px; white-space: nowrap; cursor: pointer; }
+    .buy-with-btn:hover { opacity: 0.8; }
+    .buy-with-plus { font-size: 20px; font-weight: 300; color: var(--border); flex-shrink: 0; }
+
+    /* ── Body Infographic ── */
+    .body-infographic {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--cream-warm);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bi-inner { position: relative; width: 80%; height: 85%; }
+    .bi-svg { width: 40%; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+    .bi-svg svg { width: 100%; height: 100%; }
+    .bi-label {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+    }
+    .bi-label.left { flex-direction: row; left: 0; }
+    .bi-label.right { flex-direction: row-reverse; right: 0; }
+    .bi-tag { background: var(--black); color: var(--white); padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; white-space: nowrap; }
+    .bi-line { flex: 1; height: 1px; background: rgba(0,0,0,0.25); min-width: 20px; }
+    .bi-lbl-chest  { top: 18%; width: 48%; }
+    .bi-lbl-arms   { top: 36%; width: 48%; }
+    .bi-lbl-tummy  { top: 55%; width: 48%; }
+    .bi-lbl-thighs { top: 72%; width: 48%; }
+    .bi-benefits { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .bi-benefit { background: rgba(255,255,255,0.7); border-radius: 4px; padding: 8px 10px; font-size: 11px; font-weight: 600; color: var(--black); display: flex; align-items: center; gap: 6px; }
+    .bi-benefit svg { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; }
+
+    /* ── Amber Testimonial Card ── */
+    .amber-testimonial {
+      background: #D4A945;
+      border-radius: 6px;
+      padding: 40px 36px;
+      aspect-ratio: 4/5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .amber-testimonial::before {
+      content: '\201C';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-family: var(--serif);
+      font-size: 160px;
+      color: rgba(0,0,0,0.08);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .amber-brand-logo { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.45); margin-bottom: 24px; }
+    .amber-quote { font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.45; color: var(--black); flex: 1; }
+    .amber-quote em { font-style: normal; background: rgba(0,0,0,0.12); padding: 1px 4px; border-radius: 2px; }
+    .amber-customer { display: flex; align-items: center; gap: 14px; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.15); }
+    .amber-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(0,0,0,0.15); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: rgba(0,0,0,0.35); font-family: var(--serif); }
+    .amber-customer-name { font-size: 14px; font-weight: 700; color: var(--black); }
+    .amber-customer-sub { font-size: 12px; color: rgba(0,0,0,0.5); margin-top: 2px; }
+    .amber-stars { display: flex; gap: 2px; margin-top: 4px; }
+    .amber-stars svg { width: 12px; height: 12px; fill: rgba(0,0,0,0.45); }
+
+    /* ── Reviews Filter Bar ── */
+    .reviews-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      max-width: 1300px;
+      margin: 0 auto 32px;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .reviews-filter-left { display: flex; align-items: center; gap: 20px; }
+    .reviews-count-btn { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 700; color: var(--black); background: none; border: none; cursor: pointer; font-family: var(--sans); }
+    .reviews-count-btn svg { width: 13px; height: 13px; }
+    .write-review-btn { font-size: 13px; font-weight: 600; color: var(--black); border-bottom: 1px solid var(--black); padding-bottom: 1px; background: none; cursor: pointer; font-family: var(--sans); }
+    .filter-icon-btn { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--gray); background: none; border: 1px solid var(--border); border-radius: 20px; padding: 7px 16px; cursor: pointer; font-family: var(--sans); }
+    .filter-icon-btn svg { width: 14px; height: 14px; }
+
+    /* ── Show More Reviews ── */
+    .show-more-wrap { text-align: center; padding: 28px 0 10px; }
+    .show-more-btn { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--black); border-radius: 3px; padding: 14px 44px; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); background: none; cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .show-more-btn:hover { background: var(--black); color: var(--white); }
+
+    /* ── Expert Endorsement ── */
+    .expert-section { background: var(--cream-light); padding: 80px 60px; border-top: 1px solid var(--border); }
+    .expert-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 80px; align-items: center; }
+    .expert-photo-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .expert-photo { width: 180px; height: 180px; border-radius: 50%; background: var(--cream-warm); border: 3px solid var(--gold); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .expert-photo svg { width: 80px; height: 80px; color: var(--gold); opacity: 0.4; }
+    .expert-name { font-size: 15px; font-weight: 700; color: var(--black); text-align: center; }
+    .expert-creds { font-size: 12px; color: var(--gray); text-align: center; line-height: 1.6; }
+    .expert-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .expert-heading { font-family: var(--serif); font-size: 36px; font-weight: 400; line-height: 1.25; color: var(--black); margin-bottom: 20px; }
+    .expert-quote { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--black); line-height: 1.7; border-left: 3px solid var(--gold); padding-left: 20px; margin-bottom: 20px; }
+    .expert-body { font-size: 15px; color: var(--gray); line-height: 1.8; }
+
+    /* ── Footer (Cream) ── */
+    .footer {
+      background: var(--cream-light);
+      color: var(--black);
+      padding: 60px 60px 30px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-brand-logo { font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .footer-brand-logo svg { width: 20px; height: 20px; color: var(--gold); }
+    .footer-tagline { font-size: 13px; color: var(--gray); line-height: 1.7; margin-bottom: 16px; }
+    .footer-social { display: flex; gap: 10px; margin-bottom: 6px; }
+    .footer-social a { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--black); transition: background 0.15s, color 0.15s; }
+    .footer-social a:hover { background: var(--black); color: var(--white); }
+    .footer-social svg { width: 16px; height: 16px; }
+    .footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 16px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; color: var(--black); opacity: 0.7; }
+    .footer-links a:hover { opacity: 1; }
+    .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+    .footer-copyright { font-size: 12px; color: var(--gray); }
+    .footer-fda { font-size: 10px; color: var(--gray); max-width: 480px; line-height: 1.5; opacity: 0.7; }
+    .payment-icons { display: flex; gap: 6px; flex-wrap: wrap; }
+    .payment-icon { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 4px 8px; font-size: 10px; font-weight: 700; color: var(--black); }
+
+    /* ── Mobile Nav ── */
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--black); border-radius: 1px; transition: all 0.2s; }
+    .nav-mobile-menu { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); z-index: 99; padding: 8px 20px 20px; }
+    .nav-mobile-menu.open { display: block; }
+    .nav-mobile-menu ul { list-style: none; }
+    .nav-mobile-menu li { border-bottom: 1px solid var(--border); }
+    .nav-mobile-menu a { display: block; padding: 14px 0; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--black); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero { padding: 40px 28px; gap: 40px; }
+      .feature-section { padding: 60px 40px; }
+      .feature-heading { font-size: 36px; }
+      .feature-inner { gap: 50px; }
+      .reviews-section { padding: 60px 28px; }
+      .expert-section { padding: 60px 40px; }
+      .expert-inner { grid-template-columns: 200px 1fr; gap: 50px; }
+      .footer { padding: 50px 40px 24px; }
+      .footer-grid { gap: 30px; }
+    }
+    @media (max-width: 768px) {
+      .nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; padding: 24px 16px; gap: 28px; }
+      .gallery { position: static; }
+      .feature-section { padding: 50px 20px; }
+      .feature-section.reverse .feature-inner { direction: ltr; }
+      .feature-inner { grid-template-columns: 1fr; gap: 36px; }
+      .feature-heading { font-size: 32px; }
+      .body-infographic { aspect-ratio: 1; }
+      .amber-testimonial { aspect-ratio: auto; padding: 28px 24px; }
+      .amber-quote { font-size: 18px; }
+      .trust-badges-inner { grid-template-columns: 1fr; gap: 24px; }
+      .reviews-section { padding: 50px 16px; }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .expert-section { padding: 50px 20px; }
+      .expert-inner { grid-template-columns: 1fr; gap: 32px; }
+      .expert-photo-wrap { flex-direction: row; justify-content: flex-start; align-items: center; }
+      .expert-heading { font-size: 28px; }
+      .footer { padding: 40px 20px 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .product-title { font-size: 26px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .bundle-pill { padding: 7px 14px; font-size: 13px; }
+      .feature-heading { font-size: 26px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .expert-photo-wrap { flex-direction: column; }
+      .expert-photo { width: 130px; height: 130px; }
+    }
+
+    /* ── Social Proof Popup ── */
+    .social-proof-popup {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      z-index: 999;
+      max-width: 300px;
+      animation: slideUp 0.4s ease;
+      transition: opacity 0.3s;
+    }
+    .social-proof-popup.hidden { opacity: 0; pointer-events: none; }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .popup-img {
+      width: 46px;
+      height: 46px;
+      border-radius: 4px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--cream-light);
+    }
+    .popup-text { font-size: 12px; line-height: 1.5; }
+    .popup-name { font-weight: 700; color: var(--black); }
+    .popup-action { color: var(--gray); }
+    .popup-time { color: var(--gray); font-size: 11px; }
+    .popup-close {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      font-size: 16px;
+      color: var(--gray);
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ── Price Increase Warning ── */
+    .price-warning {
+      font-size: 13px;
+      color: var(--red);
+      font-weight: 500;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+    .price-timer-chip {
+      background: var(--red);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Last Ordered Line ── */
+    .last-order-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 8px;
+    }
+    .last-order-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      animation: pulse 2s ease infinite;
+    }
+
+    /* ── Quantity Limit Badge ── */
+    .qty-limit-badge {
+      font-size: 11px;
+      color: var(--gray);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+    }
+
+    /* ── Live Purchase Ticker ── */
+    .purchase-ticker-wrap {
+      overflow: hidden;
+      background: var(--cream-light);
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--gray);
+    }
+    .ticker-inner {
+      display: inline-block;
+      white-space: nowrap;
+      animation: tickerScroll 38s linear infinite;
+    }
+    .ticker-item {
+      display: inline;
+      margin-right: 48px;
+    }
+    .ticker-item::before { content: '✓ '; color: var(--green); font-weight: 700; }
+    @keyframes tickerScroll {
+      0%   { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* ── Checkout Competition ── */
+    .checkout-competition {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 10px;
+    }
+    .checkout-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #FF6B00;
+      flex-shrink: 0;
+      animation: pulse 1.2s ease infinite;
+    }
+
+    /* ── Waitlist Threat ── */
+    .waitlist-threat {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--gray);
+      background: #FFF9F0;
+      border: 1px solid #FFD699;
+      border-radius: 4px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      line-height: 1.55;
+    }
+    .waitlist-threat svg { flex-shrink: 0; margin-top: 1px; color: #E07800; }
+
+    /* ── Exit Intent Overlay ── */
+    .exit-intent-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.68);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+    .exit-intent-overlay.active { display: flex; }
+    .exit-intent-modal {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 48px 40px 36px;
+      max-width: 440px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      animation: exitPop 0.3s ease;
+    }
+    @keyframes exitPop {
+      from { transform: scale(0.88); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+    .exit-close {
+      position: absolute;
+      top: 14px; right: 18px;
+      font-size: 24px;
+      color: var(--gray);
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+    .exit-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--red);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .exit-heading {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+    .exit-countdown {
+      font-size: 58px;
+      font-weight: 700;
+      color: var(--red);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .exit-copy {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .exit-atc {
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 17px;
+      border-radius: 3px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.15s;
+    }
+    .exit-atc:hover { background: #2a2a2a; }
+    .exit-guarantee { font-size: 12px; color: var(--gray); }
+  </style>
+</head>
+<body>
+
+  <!-- ── Announcement Bar (Rotating) ── -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="ann-slide active" id="ann0">
+      🔥 <span class="ann-hot">Only 312 bottles left</span> from our February batch — stock not guaranteed &nbsp;·&nbsp; Ships same day
+    </div>
+    <div class="ann-slide" id="ann1">
+      ⏱ Flash Sale: <span class="ann-gold">Subscribe &amp; Save 10%</span> — Sale ends in <span id="annCountdown">14:22</span> &nbsp;·&nbsp; Free US Shipping Over $50
+    </div>
+    <div class="ann-slide" id="ann2">
+      📦 Order in <span id="annShipping" class="ann-gold">2h 18m</span> for <strong id="annDeliveryDay">Thursday</strong> delivery &nbsp;·&nbsp; 4,823+ Happy Customers
+    </div>
+    <button class="ann-close" onclick="document.getElementById('announcementBar').style.display='none'" aria-label="Close">×</button>
+  </div>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav">
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">FAQs</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="nav-logo">
+      <img src="https://nutraharmony.com/cdn/shop/files/logo-deep-blue.png?v=1775049789&width=600" alt="NutraHarmony" style="height:38px;width:auto;display:block;" />
+    </div>
+    <div class="nav-icons">
+      <button aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+      <a href="#">Log in</a>
+      <button aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu" onclick="document.getElementById('navMobileMenu').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile-menu" id="navMobileMenu">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">FAQs</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ── Hero Section ── -->
+  <section class="hero">
+
+    <!-- LEFT: Image Gallery -->
+    <div class="gallery">
+      <div class="gallery-main" id="mainGallery">
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" alt="NutraHarmony Menopause Supplement" class="active" />
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/814eD2VH2TL._AC_SL1500.jpg?v=1764179982" alt="NutraHarmony Menopause Supplement" />
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/817AoykUAeL._AC_SL1500.jpg?v=1764179982" alt="NutraHarmony Menopause Supplement" />
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81DZG_Nm5hL._AC_SL1500.jpg?v=1764179982" alt="NutraHarmony Menopause Supplement" />
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81SBY3OhDdL._AC_SL1500.jpg?v=1764179982" alt="NutraHarmony Menopause Supplement" />
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81V86CxaW1L._AC_SL1500.jpg?v=1764179982" alt="NutraHarmony Menopause Supplement" />
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81MyaSV_37L._AC_SL1500.jpg?v=1764179982" alt="NutraHarmony Menopause Supplement" />
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/711C0jLwkaL._AC_SL1500.jpg?v=1764179982" alt="NutraHarmony Menopause Supplement" />
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/91SAdJLyn_L._AC_SL1500.jpg?v=1764179982" alt="NutraHarmony Menopause Supplement" />
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81u5ziRaCJL._AC_SL1500.jpg?v=1764179982" alt="NutraHarmony Menopause Supplement" />
+        <button class="gallery-arrow prev" id="galleryPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="gallery-arrow next" id="galleryNext" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="gallery-thumbs" id="galleryThumbs">
+        <div class="gallery-thumb active" data-index="0"><img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" alt="" /></div>
+        <div class="gallery-thumb" data-index="1"><img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/814eD2VH2TL._AC_SL1500.jpg?v=1764179982" alt="" /></div>
+        <div class="gallery-thumb" data-index="2"><img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/817AoykUAeL._AC_SL1500.jpg?v=1764179982" alt="" /></div>
+        <div class="gallery-thumb" data-index="3"><img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81DZG_Nm5hL._AC_SL1500.jpg?v=1764179982" alt="" /></div>
+        <div class="gallery-thumb" data-index="4"><img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81SBY3OhDdL._AC_SL1500.jpg?v=1764179982" alt="" /></div>
+        <div class="gallery-thumb" data-index="5"><img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81V86CxaW1L._AC_SL1500.jpg?v=1764179982" alt="" /></div>
+        <div class="gallery-thumb" data-index="6"><img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81MyaSV_37L._AC_SL1500.jpg?v=1764179982" alt="" /></div>
+        <div class="gallery-thumb" data-index="7"><img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/711C0jLwkaL._AC_SL1500.jpg?v=1764179982" alt="" /></div>
+        <div class="gallery-thumb" data-index="8"><img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/91SAdJLyn_L._AC_SL1500.jpg?v=1764179982" alt="" /></div>
+        <div class="gallery-thumb" data-index="9"><img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81u5ziRaCJL._AC_SL1500.jpg?v=1764179982" alt="" /></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Purchase Form -->
+    <div class="purchase-form">
+
+      <!-- Rating -->
+      <div class="rating-row">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <a href="#reviews" class="review-count">(4,823 Reviews)</a>
+      </div>
+
+      <!-- Titles & Price -->
+      <p class="product-subtitle">Supports energy, balance &amp; vitality through every stage of change</p>
+      <h1 class="product-title">NutraHarmony® Menopause Supplement — 25-in-1 Formula</h1>
+
+      <div class="price-row">
+        <span class="price-current" id="priceDisplay">$35.95</span>
+        <span class="price-compare" id="priceCompare">$39.94</span>
+      </div>
+      <!-- Price Increase Warning -->
+      <div class="price-warning" id="priceWarning">
+        ⚠ Price increases to <strong>$44.95</strong> in <span class="price-timer-chip" id="priceIncreaseTimer">01:47:22</span>
+      </div>
+
+      <div class="badge-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Subscribe &amp; Save 10%
+      </div>
+
+      <!-- Trust line -->
+      <div class="trust-line">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Made in USA</span>
+        &nbsp;·&nbsp;
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>GMP Certified</span>
+        &nbsp;·&nbsp;
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v4m0 4h.01"/></svg>
+        <span>Non-GMO &amp; Gluten-Free</span>
+      </div>
+
+      <!-- Callout box -->
+      <div class="callout-box">
+        <strong>25 Clinically Researched Ingredients</strong> — Including Black Cohosh, Dong Quai, Ashwagandha, MAKTREK Probiotics &amp; more. <a href="#ingredients">See full formula →</a>
+      </div>
+
+      <!-- Urgency -->
+      <div class="urgency-row">
+        <div class="urgency-dot"></div>
+        <div class="urgency-text">
+          <strong>High Demand</strong> — This product is being purchased frequently. Based on current sales volume, stock may be limited.
+        </div>
+      </div>
+
+      <!-- Stock Bar -->
+      <div class="scarcity-stock-wrap">
+        <div class="scarcity-stock-top">
+          <div class="scarcity-stock-label">
+            <div class="pulse-dot"></div>
+            Only <span id="stockCount">9</span>&nbsp;units left at this price
+          </div>
+          <div class="scarcity-stock-count"><span id="soldCount">847</span> sold today</div>
+        </div>
+        <div class="stock-bar-track">
+          <div class="stock-bar-fill" id="stockBarFill" style="width:91%;"></div>
+        </div>
+        <!-- Last Ordered -->
+        <div class="last-order-line">
+          <span class="last-order-dot"></span>
+          Last order placed <strong id="lastOrderTime">3 minutes ago</strong> from <strong id="lastOrderCity">Denver, CO</strong>
+        </div>
+      </div>
+
+      <!-- Timers -->
+      <div class="scarcity-timers">
+        <div class="scarcity-timer-row">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Flash sale price expires in</span>
+          <span class="countdown-chip" id="flashTimer">14:22</span>
+        </div>
+        <div class="scarcity-timer-row">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span>Order in</span>
+          <span class="shipping-chip" id="shippingTimer">2h 18m</span>
+          <span>for <strong id="deliveryDay">Thursday</strong> delivery</span>
+        </div>
+      </div>
+
+      <!-- Live Counts -->
+      <div class="live-counts-row">
+        <div class="live-count-chip">
+          <div class="live-dot"></div>
+          <strong id="viewerCount">34</strong>&nbsp;viewing now
+        </div>
+        <div class="live-count-chip">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <strong id="cartCount">18</strong>&nbsp;in carts right now
+        </div>
+      </div>
+
+      <!-- Tagline -->
+      <p class="product-tagline">
+        For hot flashes, night sweats, mood swings, sleep disturbances, low energy &amp; brain fog. Suitable for all stages of menopause.
+      </p>
+
+      <!-- Purchase Options -->
+      <div class="purchase-options">
+        <!-- Subscribe -->
+        <div class="purchase-option selected" id="optSubscribe" onclick="selectOption('subscribe')">
+          <div class="save-tag">Save 10% On Every Order</div>
+          <div class="purchase-option-header">
+            <div class="radio-dot"><div class="radio-inner"></div></div>
+            <span class="option-label">Subscribe &amp; Save</span>
+            <div class="option-price-wrap">
+              <div class="option-price">$35.95<span style="font-weight:400;font-size:13px;color:var(--gray)">/mo</span></div>
+              <div class="option-compare">$39.94</div>
+            </div>
+          </div>
+          <div class="option-benefits">
+            <div class="option-benefit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Better pricing locked in, every order
+            </div>
+            <div class="option-benefit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Flexible delivery timing — your schedule
+            </div>
+            <div class="option-benefit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Modify, pause or cancel any time
+            </div>
+            <div class="option-benefit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Early access to new products &amp; discounts
+            </div>
+          </div>
+          <div class="deliver-selector" style="display:none;" id="deliverSelector">
+            <div class="deliver-label">Deliver every:</div>
+            <div class="deliver-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+              1 Month · Save 10%
+            </div>
+          </div>
+        </div>
+
+        <!-- One-time -->
+        <div class="purchase-option" id="optOnetime" onclick="selectOption('onetime')">
+          <div class="purchase-option-header">
+            <div class="radio-dot"><div class="radio-inner"></div></div>
+            <span class="option-label">One-time Purchase</span>
+            <div class="option-price-wrap">
+              <div class="option-price">$39.94</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bundle Selector -->
+      <div class="bundle-section">
+        <div class="bundle-label">Package Supply</div>
+        <p class="qty-limit-badge">⚡ Limit 3 per customer — high demand restriction in effect</p>
+        <div class="bundle-pills">
+          <button class="bundle-pill" onclick="selectBundle(this, 1)">1 Bottle<span class="bundle-stock-tag ok">14 left</span></button>
+          <button class="bundle-pill active low-stock" onclick="selectBundle(this, 2)">2 Bottles<span class="pill-badge">Most Popular</span><span class="bundle-stock-tag low">⚠ Only 4 left</span></button>
+          <button class="bundle-pill" onclick="selectBundle(this, 3)">3 Bottles<span class="pill-badge">Best Value</span><span class="bundle-stock-tag ok">11 left</span></button>
+        </div>
+      </div>
+
+      <!-- Live Purchase Ticker -->
+      <div class="purchase-ticker-wrap" aria-hidden="true">
+        <div class="ticker-inner">
+          <span class="ticker-item">Janet · Austin, TX · 3-bottle · 2m ago</span>
+          <span class="ticker-item">Maria · Chicago, IL · 2-bottle · 5m ago</span>
+          <span class="ticker-item">Deborah · Seattle, WA · 3-bottle · 8m ago</span>
+          <span class="ticker-item">Susan · Miami, FL · 3-bottle · 12m ago</span>
+          <span class="ticker-item">Carol · Phoenix, AZ · 2-bottle · 16m ago</span>
+          <span class="ticker-item">Patricia · Denver, CO · 3-bottle · 20m ago</span>
+          <span class="ticker-item">Linda · Nashville, TN · 2-bottle · 24m ago</span>
+        </div>
+      </div>
+
+      <!-- Checkout Competition -->
+      <div class="checkout-competition">
+        <div class="checkout-dot"></div>
+        <span><strong id="checkoutCount">7</strong> people are checking out right now</span>
+      </div>
+
+      <!-- ATC -->
+      <button class="atc-btn" onclick="startCartReservation()">Add to Cart</button>
+      <div id="cartReservation" style="display:none;text-align:center;font-size:12px;color:var(--gray);margin:-6px 0 10px;padding:7px 12px;background:rgba(0,127,78,0.07);border-radius:4px;border:1px solid rgba(0,127,78,0.15);">
+        🛒 We're holding your price for <strong style="color:var(--green);" id="reservationTimer">10:00</strong>
+      </div>
+
+      <!-- Waitlist Threat -->
+      <div class="waitlist-threat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span><strong id="waitlistCount">847</strong> customers on the waitlist — your spot releases to the next person if you don't complete your order</span>
+      </div>
+
+      <div class="secure-trust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Secure Checkout &nbsp;·&nbsp; 30-Day Money-Back Guarantee
+      </div>
+
+      <!-- Trustpilot Carousel -->
+      <div class="tp-carousel-wrap">
+        <div class="tp-header">
+          <img src="https://cdn.trustpilot.net/brand-assets/4.1.0/logo-black.svg" alt="Trustpilot" style="height:20px;width:auto;display:block;" />
+          <img src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-5.svg" alt="5 stars" style="height:20px;width:auto;display:block;" />
+          <div class="tp-score">Excellent &nbsp;·&nbsp; <strong>4.8</strong> / 5 &nbsp;·&nbsp; 4,823 reviews</div>
+        </div>
+        <div id="tpTrack">
+          <div class="tp-slide active">"Hot flashes dropped dramatically in just 3 weeks. I feel like myself again — the probiotics were a bonus I didn't expect."<div class="tp-slide-reviewer">— Sarah M. · Verified Purchase</div></div>
+          <div class="tp-slide">"I've tried 6 brands. This one genuinely works. My sleep improved in the first week and my mood swings are finally manageable."<div class="tp-slide-reviewer">— Jennifer K. · Verified Purchase</div></div>
+          <div class="tp-slide">"The energy boost is real. The ashwagandha and maca combo is doing something magical for my body. Highly recommend to anyone in perimenopause."<div class="tp-slide-reviewer">— Karen T. · Verified Purchase</div></div>
+          <div class="tp-slide">"Brain fog is gone. I feel sharp again. GMP certified and made in the USA gave me the confidence to try it. So glad I did."<div class="tp-slide-reviewer">— Barbara W. · Verified Purchase</div></div>
+        </div>
+        <div class="tp-dots" id="tpDots">
+          <div class="tp-dot active" onclick="goToSlide(0)"></div>
+          <div class="tp-dot" onclick="goToSlide(1)"></div>
+          <div class="tp-dot" onclick="goToSlide(2)"></div>
+          <div class="tp-dot" onclick="goToSlide(3)"></div>
+        </div>
+      </div>
+
+      <!-- Ingredients -->
+      <div class="ingredients-section" id="ingredients">
+        <p class="ingredients-heading">The finest ingredients. Clinically selected, naturally sourced.</p>
+        <ul class="ingredients-list">
+          <li><span class="ingredient-name">Black Cohosh Extract</span>&nbsp;<span class="ingredient-benefit">— eases hot flashes &amp; hormonal discomfort</span></li>
+          <li><span class="ingredient-name">Ashwagandha</span>&nbsp;<span class="ingredient-benefit">— reduces stress &amp; supports mood balance</span></li>
+          <li><span class="ingredient-name">Maca Root</span>&nbsp;<span class="ingredient-benefit">— boosts energy &amp; revives vitality</span></li>
+          <li><span class="ingredient-name">MAKTREK® Probiotics</span>&nbsp;<span class="ingredient-benefit">— gut health &amp; vaginal microbiome support</span></li>
+          <li><span class="ingredient-name">Red Clover Extract</span>&nbsp;<span class="ingredient-benefit">— gentle hormonal balance from within</span></li>
+          <li><span class="ingredient-name">Dong Quai</span>&nbsp;<span class="ingredient-benefit">— traditional women's hormonal health herb</span></li>
+          <li><span class="ingredient-name">Chasteberry</span>&nbsp;<span class="ingredient-benefit">— mood stability &amp; menstrual harmony</span></li>
+        </ul>
+        <p class="ingredients-copy">
+          Reveal naturally balanced energy and hormonal harmony with our powerful 25-in-1 formula, created to support your body through every phase of menopause. It's your journey — own it.
+        </p>
+
+        <p style="font-family:var(--serif);font-size:19px;font-style:italic;line-height:1.6;color:var(--black);margin-bottom:18px;">"Your body deserves more than one-size-fits-all support — this is a formula built around the real complexity of your change."</p>
+
+        <!-- Accordion -->
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              How To Use
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-content">
+              As a dietary supplement, take <strong>2 (two) capsules</strong> with water once daily, preferably with a meal or as directed by your physician. Do not exceed the recommended dosage. For best results, take consistently for at least 60 days.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              Safety &amp; Storage
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-content">
+              For adult use only. Keep out of reach of children. Consult with your physician before use if you are taking any medications. Do not use if pregnant or nursing. Store in a cool, dry place below 85°F. Manufactured in a facility that processes milk, eggs, wheat, soy, fish, tree nuts, and peanuts.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buy It With -->
+      <div class="buy-with-card">
+        <div class="buy-with-label">Frequently Bought Together</div>
+        <div class="buy-with-row">
+          <div class="buy-with-img">
+            <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" alt="Menopause Supplement" />
+          </div>
+          <div class="buy-with-plus">+</div>
+          <div class="buy-with-img" style="background:var(--cream-light);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="buy-with-info">
+            <div class="buy-with-name">NutraHarmony Collagen+</div>
+            <div class="buy-with-price">$29.95 — Add to your order</div>
+          </div>
+          <button class="buy-with-btn">Quick Buy</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Feature Section A: Natural Support ── -->
+  <section class="feature-section">
+    <div class="feature-inner">
+      <div class="feature-text">
+        <div class="feature-eyebrow">25-in-1 Formula</div>
+        <h2 class="feature-heading">Natural Support for Her. Pure, Effective &amp; Trusted.</h2>
+        <p class="feature-body">
+          Formulated with some of the most respected herbs in women's health — Black Cohosh, Dong Quai, Chasteberry, Red Clover, Maca Root, and more — this supplement provides a full-spectrum approach to menopausal care.
+          <br/><br/>
+          Each ingredient is chosen for its targeted benefits: helping to ease hormonal discomfort, support mood stability, boost vitality, and gently support hormonal balance from within. No fluff — just real support for real women.
+        </p>
+      </div>
+      <!-- Body Infographic -->
+      <div class="body-infographic">
+        <div class="bi-inner">
+          <!-- Body SVG -->
+          <div class="bi-svg">
+            <svg viewBox="0 0 60 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Head -->
+              <circle cx="30" cy="10" r="8" stroke="#0B0B0B" stroke-width="1.5" fill="rgba(196,168,59,0.2)"/>
+              <!-- Neck -->
+              <rect x="27" y="18" width="6" height="6" rx="1" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1"/>
+              <!-- Torso -->
+              <path d="M18 24 Q12 28 12 38 L12 70 Q12 74 16 74 L44 74 Q48 74 48 70 L48 38 Q48 28 42 24 Z" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1.5"/>
+              <!-- Left arm -->
+              <path d="M18 26 Q8 32 7 48 Q6 56 10 60" stroke="#0B0B0B" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <ellipse cx="10" cy="62" rx="4" ry="4" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1"/>
+              <!-- Right arm -->
+              <path d="M42 26 Q52 32 53 48 Q54 56 50 60" stroke="#0B0B0B" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <ellipse cx="50" cy="62" rx="4" ry="4" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1"/>
+              <!-- Left leg -->
+              <path d="M22 74 L20 100 L18 120" stroke="#0B0B0B" stroke-width="1.5" stroke-linecap="round"/>
+              <ellipse cx="18" cy="122" rx="4" ry="3" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1"/>
+              <!-- Right leg -->
+              <path d="M38 74 L40 100 L42 120" stroke="#0B0B0B" stroke-width="1.5" stroke-linecap="round"/>
+              <ellipse cx="42" cy="122" rx="4" ry="3" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1"/>
+            </svg>
+          </div>
+          <!-- Labels -->
+          <div class="bi-label left bi-lbl-chest">
+            <div class="bi-tag">Chest</div>
+            <div class="bi-line"></div>
+          </div>
+          <div class="bi-label right bi-lbl-arms">
+            <div class="bi-tag">Arms</div>
+            <div class="bi-line"></div>
+          </div>
+          <div class="bi-label left bi-lbl-tummy">
+            <div class="bi-tag">Tummy</div>
+            <div class="bi-line"></div>
+          </div>
+          <div class="bi-label left bi-lbl-thighs">
+            <div class="bi-tag">Thighs</div>
+            <div class="bi-line"></div>
+          </div>
+          <!-- Benefits grid -->
+          <div class="bi-benefits">
+            <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hot flash relief</div>
+            <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Mood balance</div>
+            <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Gut support</div>
+            <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Energy boost</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Feature Section B: Social Proof ── -->
+  <section class="feature-section reverse">
+    <div class="feature-inner">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Women Who Feel the Difference</div>
+        <h2 class="feature-heading">Trusted by Thousands of Women Just Like You</h2>
+        <p class="feature-body">
+          Unlike typical menopause supplements, ours includes a carefully selected blend of prebiotics and probiotics — featuring MAKTREK® and FOS — for comprehensive gut and intimate health support.
+          <br/><br/>
+          It helps maintain a healthy digestive system, reduces occasional bloating, and supports a balanced vaginal microbiome. Natural support where you need it most.
+        </p>
+        <div style="margin-top: 16px; display: flex; gap: 40px;">
+          <div>
+            <div class="feature-stat">25+</div>
+            <div class="feature-stat-label">Active Ingredients</div>
+          </div>
+          <div>
+            <div class="feature-stat">4.8★</div>
+            <div class="feature-stat-label">Average Rating</div>
+          </div>
+          <div>
+            <div class="feature-stat">30</div>
+            <div class="feature-stat-label">Day Guarantee</div>
+          </div>
+        </div>
+      </div>
+      <!-- Amber Testimonial Card -->
+      <div class="amber-testimonial">
+        <div>
+          <div class="amber-brand-logo">NutraHarmony</div>
+          <div class="amber-quote">
+            "I have tried so many supplements over the years. Nothing came close to this. <em>Hot flashes — gone.</em> Night sweats — <em>finally sleeping</em> through. My husband noticed before I even told him."
+          </div>
+        </div>
+        <div class="amber-customer">
+          <div class="amber-avatar">S</div>
+          <div>
+            <div class="amber-customer-name">Sarah M., Austin TX</div>
+            <div class="amber-customer-sub">Verified Buyer · 3 months in</div>
+            <div class="amber-stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Feature Section C: Lifestyle ── -->
+  <section class="feature-section">
+    <div class="feature-inner">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Your Journey, Your Power</div>
+        <h2 class="feature-heading">Embrace Your Journey, Reclaim Your Vitality</h2>
+        <p class="feature-body">
+          Our 25-in-1 Menopause Supplement is your daily companion for every stage of this natural transition. Whether you're dealing with hot flashes, night sweats, low energy, mood swings, sleep disturbances, or brain fog — this gentle yet effective blend helps you feel balanced, empowered, and in tune with your body.
+          <br/><br/>
+          Stay strong, sharp, and serene through every phase of this important journey.
+        </p>
+      </div>
+      <div class="feature-img-wrap product-bg">
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81SBY3OhDdL._AC_SL1500.jpg?v=1764179982" alt="NutraHarmony Menopause Supplement" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Trust Badges ── -->
+  <div class="trust-badges-section">
+    <div class="trust-badges-inner">
+      <div class="trust-badge">
+        <svg class="trust-badge-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="16" width="36" height="26" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M18 16v-4a8 8 0 0116 0v4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="26" cy="29" r="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M26 33v4" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <div class="trust-badge-title">Made in USA</div>
+        <div class="trust-badge-sub">GMP-Certified Facility</div>
+      </div>
+      <div class="trust-badge">
+        <svg class="trust-badge-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="18" stroke="currentColor" stroke-width="2"/>
+          <path d="M18 26l6 6 10-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="trust-badge-title">Non-GMO &amp; GMP Certified</div>
+        <div class="trust-badge-sub">Gluten-Free · Soy-Free · Dye-Free</div>
+      </div>
+      <div class="trust-badge">
+        <svg class="trust-badge-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M26 8l3.5 7.5L38 16.5l-6 5.5 1.5 8.5L26 26l-7.5 4.5 1.5-8.5-6-5.5 8.5-1L26 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M14 38h24M18 44h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="trust-badge-title">30-Day Guarantee</div>
+        <div class="trust-badge-sub">Risk-Free · Full Refund</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Reviews ── -->
+  <section class="reviews-section" id="reviews">
+    <div class="reviews-header">
+      <h2>Real Results. Real Women.</h2>
+      <div class="reviews-aggregate">
+        <div class="stars" style="display:flex;gap:3px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <strong>4.8 / 5</strong> based on <strong>4,823 reviews</strong>
+      </div>
+    </div>
+
+    <!-- Rating Breakdown -->
+    <div style="max-width:1300px;margin:0 auto 0;padding:24px 0 0;">
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-bottom:24px;">
+        <div style="text-align:center;min-width:80px;">
+          <div style="font-family:var(--serif);font-size:56px;font-weight:400;line-height:1;color:var(--black);">4.8</div>
+          <div style="display:flex;gap:2px;justify-content:center;margin:6px 0 4px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div style="font-size:12px;color:var(--gray);">4,823 reviews</div>
+        </div>
+        <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gray);">
+            <span style="width:16px;text-align:right;">5★</span>
+            <div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;"><div style="width:91%;height:100%;background:#FFB800;border-radius:3px;"></div></div>
+            <span style="width:28px;">91%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gray);">
+            <span style="width:16px;text-align:right;">4★</span>
+            <div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;"><div style="width:6%;height:100%;background:#FFB800;border-radius:3px;"></div></div>
+            <span style="width:28px;">6%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gray);">
+            <span style="width:16px;text-align:right;">3★</span>
+            <div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;"><div style="width:2%;height:100%;background:var(--border);border-radius:3px;"></div></div>
+            <span style="width:28px;">2%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gray);">
+            <span style="width:16px;text-align:right;">2★</span>
+            <div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;"><div style="width:1%;height:100%;background:var(--border);border-radius:3px;"></div></div>
+            <span style="width:28px;">1%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gray);">
+            <span style="width:16px;text-align:right;">1★</span>
+            <div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;"><div style="width:0%;height:100%;background:var(--border);border-radius:3px;"></div></div>
+            <span style="width:28px;">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Filter Bar -->
+    <div class="reviews-filter-bar">
+      <div class="reviews-filter-left">
+        <div class="stars" style="display:flex;gap:2px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <button class="reviews-count-btn">
+          4,823 Reviews
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <button class="write-review-btn">Write a Review</button>
+      </div>
+      <button class="filter-icon-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+        Filter
+      </button>
+    </div>
+
+    <div class="reviews-grid">
+
+      <!-- Review 1 (with product image) -->
+      <div class="review-card">
+        <img class="review-img" src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81SBY3OhDdL._AC_SL1500.jpg?v=1764179982" alt="Review photo" />
+        <div class="review-body">
+          <div class="review-meta">
+            <span class="reviewer-name">Sarah M.</span>
+            <span class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/></svg> Verified</span>
+          </div>
+          <div class="review-date">5/14/2026</div>
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">I've been taking this for 3 weeks and my hot flashes have significantly reduced. I finally sleep through the night! The probiotics are a bonus I didn't expect to love so much.</p>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-card">
+        <div class="review-img-placeholder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
+        <div class="review-body">
+          <div class="review-meta">
+            <span class="reviewer-name">Jennifer K.</span>
+            <span class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/></svg> Verified</span>
+          </div>
+          <div class="review-date">5/10/2026</div>
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">The probiotics in this are a game changer. My digestion has improved so much alongside the menopause relief. I love that it's truly all-in-one — I used to take so many separate supplements.</p>
+        </div>
+      </div>
+
+      <!-- Review 3 (with product image) -->
+      <div class="review-card">
+        <img class="review-img" src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81V86CxaW1L._AC_SL1500.jpg?v=1764179982" alt="Review photo" />
+        <div class="review-body">
+          <div class="review-meta">
+            <span class="reviewer-name">Patricia L.</span>
+            <span class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/></svg> Verified</span>
+          </div>
+          <div class="review-date">5/7/2026</div>
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">I'm 52 and was so skeptical but this really delivers. My mood swings are so much better and I have energy to get through my day without crashing. Genuinely impressed.</p>
+        </div>
+      </div>
+
+      <!-- Review 4 -->
+      <div class="review-card">
+        <div class="review-img-placeholder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
+        <div class="review-body">
+          <div class="review-meta">
+            <span class="reviewer-name">Donna C.</span>
+            <span class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/></svg> Verified</span>
+          </div>
+          <div class="review-date">5/4/2026</div>
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">I love that it's 25-in-1. I used to take so many supplements separately and spend a fortune. This one covers everything. My sleep has been the biggest improvement — I wake up actually rested.</p>
+        </div>
+      </div>
+
+      <!-- Review 5 (with product image) -->
+      <div class="review-card">
+        <img class="review-img" src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/81MyaSV_37L._AC_SL1500.jpg?v=1764179982" alt="Review photo" />
+        <div class="review-body">
+          <div class="review-meta">
+            <span class="reviewer-name">Karen T.</span>
+            <span class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/></svg> Verified</span>
+          </div>
+          <div class="review-date">4/29/2026</div>
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">The energy boost is real! I feel like myself again after years of fighting fatigue during perimenopause. The ashwagandha and maca combo is doing something magical for me.</p>
+        </div>
+      </div>
+
+      <!-- Review 6 -->
+      <div class="review-card">
+        <div class="review-img-placeholder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
+        <div class="review-body">
+          <div class="review-meta">
+            <span class="reviewer-name">Linda B.</span>
+            <span class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/></svg> Verified</span>
+          </div>
+          <div class="review-date">4/22/2026</div>
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">3 months in and this is honestly the best menopause supplement I've ever tried. I've tried 6 different brands. The GMP certification and Made in USA gave me confidence to start, and the results kept me here.</p>
+        </div>
+      </div>
+
+      <!-- Review 7 -->
+      <div class="review-card">
+        <img class="review-img" src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/711C0jLwkaL._AC_SL1500.jpg?v=1764179982" alt="Review photo" />
+        <div class="review-body">
+          <div class="review-meta">
+            <span class="reviewer-name">Michelle P.</span>
+            <span class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/></svg> Verified</span>
+          </div>
+          <div class="review-date">4/18/2026</div>
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">Night sweats are almost completely gone. My husband noticed the difference before I even told him I started taking something. That says everything.</p>
+        </div>
+      </div>
+
+      <!-- Review 8 -->
+      <div class="review-card">
+        <div class="review-img-placeholder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
+        <div class="review-body">
+          <div class="review-meta">
+            <span class="reviewer-name">Barbara W.</span>
+            <span class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/></svg> Verified</span>
+          </div>
+          <div class="review-date">4/11/2026</div>
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">Made in USA and GMP certified gave me the confidence to try it, and I am so glad I did. Brain fog was my biggest issue and I can honestly say my clarity has returned. I feel sharp again.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Show More -->
+    <div class="show-more-wrap">
+      <button class="show-more-btn">
+        Show More Reviews
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ── Expert Endorsement ── -->
+  <section class="expert-section">
+    <div class="expert-inner">
+      <div class="expert-photo-wrap">
+        <div class="expert-photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </div>
+        <div>
+          <div class="expert-name">Dr. Rachel Chen, MD</div>
+          <div class="expert-creds">Board-Certified OB-GYN<br/>Women's Hormonal Health Specialist<br/>15+ years clinical experience</div>
+        </div>
+      </div>
+      <div class="expert-text">
+        <div class="expert-eyebrow">Clinical Endorsement</div>
+        <h2 class="expert-heading">Recommended by Women's Health Professionals</h2>
+        <blockquote class="expert-quote">
+          "As a practitioner who sees dozens of women navigating menopause every week, I'm impressed by the breadth of this formula. The inclusion of MAKTREK® probiotics alongside the traditional hormonal herbs like Black Cohosh and Dong Quai reflects a genuinely holistic approach to menopausal wellness."
+        </blockquote>
+        <p class="expert-body">
+          NutraHarmony's 25-in-1 formulation aligns with an integrative care philosophy — addressing not just hot flashes and mood, but gut microbiome health and long-term hormonal balance. Manufactured in a GMP-certified US facility with non-GMO, gluten-free ingredients. A formulation I'm comfortable recommending.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">
+          <img src="https://nutraharmony.com/cdn/shop/files/logo-deep-blue.png?v=1775049789&width=600" alt="NutraHarmony" style="height:36px;width:auto;display:block;margin-bottom:2px;" />
+        </div>
+        <p class="footer-tagline">
+          Premium supplements crafted to support women through every phase of life. Made in the USA, backed by science, trusted by thousands.
+        </p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <ul class="footer-links">
+          <li><a href="#">Menopause Supplement</a></li>
+          <li><a href="#">All Products</a></li>
+          <li><a href="#">Subscribe &amp; Save</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Track Your Order</a></li>
+          <li><a href="#">Returns &amp; Refunds</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">About NutraHarmony</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <div class="footer-copyright">© 2026, NutraHarmony. All rights reserved.</div>
+        <div class="footer-fda" style="margin-top:8px;">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</div>
+      </div>
+      <div class="payment-icons">
+        <!-- Visa -->
+        <span class="payment-icon" title="Visa"><svg width="38" height="24" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#fff" stroke="#E0E0E0"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#1a1f71">VISA</text></svg></span>
+        <!-- Mastercard -->
+        <span class="payment-icon" title="Mastercard"><svg width="38" height="24" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#fff" stroke="#E0E0E0"/><circle cx="15" cy="12" r="6" fill="#EB001B"/><circle cx="23" cy="12" r="6" fill="#F79E1B"/><path d="M19 7.8a6 6 0 010 8.4A6 6 0 0119 7.8z" fill="#FF5F00"/></svg></span>
+        <!-- Amex -->
+        <span class="payment-icon" title="American Express"><svg width="38" height="24" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#2557D6"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-size="9" font-weight="700" fill="#fff">AMEX</text></svg></span>
+        <!-- PayPal -->
+        <span class="payment-icon" title="PayPal"><svg width="38" height="24" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#fff" stroke="#E0E0E0"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-size="9" font-weight="700" fill="#003087">Pay</text><text x="25" y="16" text-anchor="start" font-family="Arial" font-size="9" font-weight="700" fill="#009CDE">Pal</text></svg></span>
+        <!-- Apple Pay -->
+        <span class="payment-icon" title="Apple Pay"><svg width="38" height="24" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#000"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-size="8" font-weight="600" fill="#fff"> Pay</text></svg></span>
+        <!-- Shop Pay -->
+        <span class="payment-icon" title="Shop Pay"><svg width="38" height="24" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#5A31F4"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#fff">Shop</text></svg></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Social Proof Popup ── -->
+  <div class="social-proof-popup" id="socialPopup">
+    <span class="popup-close" onclick="document.getElementById('socialPopup').classList.add('hidden')">×</span>
+    <img class="popup-img" src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" alt="" />
+    <div class="popup-text">
+      <div class="popup-name" id="popupName">Janet from Austin, TX</div>
+      <div class="popup-action" id="popupAction">Purchased the <strong>3-bottle bundle</strong></div>
+      <div style="display:flex;align-items:center;gap:4px;margin-top:2px;">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#FFB800"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span style="font-size:10px;color:var(--gray);margin-left:2px;" id="popupTime">8 minutes ago</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Exit Intent Overlay ── -->
+  <div class="exit-intent-overlay" id="exitOverlay">
+    <div class="exit-intent-modal">
+      <button class="exit-close" onclick="document.getElementById('exitOverlay').classList.remove('active')">×</button>
+      <div class="exit-eyebrow">Wait — Don't Leave Yet</div>
+      <h2 class="exit-heading">Your price is about to expire</h2>
+      <div class="exit-countdown" id="exitCountdown">4:59</div>
+      <p class="exit-copy">
+        Only <strong id="exitStock">9</strong> bottles remain at this price.
+        Once the timer runs out, this discount disappears permanently.
+      </p>
+      <button class="exit-atc" onclick="document.getElementById('exitOverlay').classList.remove('active'); document.querySelector('.atc-btn').click();">
+        Add to Cart — Keep My Price
+      </button>
+      <div class="exit-guarantee">🔒 30-Day Money-Back Guarantee &nbsp;·&nbsp; Free US Shipping Over $50</div>
+    </div>
+  </div>
+
+  <script>
+    // ── Gallery ──
+    const images = document.querySelectorAll('#mainGallery img:not(.gallery-arrow img)');
+    const thumbs = document.querySelectorAll('#galleryThumbs .gallery-thumb');
+    let currentIdx = 0;
+
+    function goToImage(idx) {
+      images[currentIdx].classList.remove('active');
+      thumbs[currentIdx].classList.remove('active');
+      currentIdx = (idx + images.length) % images.length;
+      images[currentIdx].classList.add('active');
+      thumbs[currentIdx].classList.add('active');
+      thumbs[currentIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    document.getElementById('galleryPrev').addEventListener('click', () => goToImage(currentIdx - 1));
+    document.getElementById('galleryNext').addEventListener('click', () => goToImage(currentIdx + 1));
+    thumbs.forEach(thumb => thumb.addEventListener('click', () => goToImage(+thumb.dataset.index)));
+
+    // ── Purchase Option Toggle ──
+    function selectOption(type) {
+      const subOpt = document.getElementById('optSubscribe');
+      const oneOpt = document.getElementById('optOnetime');
+      const priceDisplay = document.getElementById('priceDisplay');
+      const priceCompare = document.getElementById('priceCompare');
+      const deliverSelector = document.getElementById('deliverSelector');
+
+      if (type === 'subscribe') {
+        subOpt.classList.add('selected');
+        oneOpt.classList.remove('selected');
+        priceDisplay.textContent = '$35.95';
+        priceCompare.textContent = '$39.94';
+        priceCompare.style.display = 'inline';
+        deliverSelector.style.display = 'block';
+      } else {
+        oneOpt.classList.add('selected');
+        subOpt.classList.remove('selected');
+        priceDisplay.textContent = '$39.94';
+        priceCompare.style.display = 'none';
+        deliverSelector.style.display = 'none';
+      }
+    }
+    // Show deliver selector by default (subscribe is selected)
+    document.getElementById('deliverSelector').style.display = 'block';
+
+    // ── Bundle Selector ──
+    const bundlePrices = { 1: { sub: '$35.95', one: '$39.94' }, 2: { sub: '$71.90', one: '$79.88' }, 3: { sub: '$107.85', one: '$119.82' } };
+    let currentBundle = 2;
+
+    function selectBundle(el, num) {
+      document.querySelectorAll('.bundle-pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      currentBundle = num;
+      const isSubscribe = document.getElementById('optSubscribe').classList.contains('selected');
+      const prices = bundlePrices[num];
+      document.getElementById('priceDisplay').textContent = isSubscribe ? prices.sub : prices.one;
+      if (isSubscribe) {
+        document.getElementById('priceCompare').textContent = prices.one;
+        document.getElementById('priceCompare').style.display = 'inline';
+      }
+      // Switch main gallery image based on bundle
+      const imgMap = { 1: 0, 2: 1, 3: 2 };
+      goToImage(imgMap[num] || 0);
+    }
+
+    // ── Accordion ──
+    function toggleAccordion(trigger) {
+      const content = trigger.nextElementSibling;
+      const isOpen = content.classList.contains('open');
+      document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+      document.querySelectorAll('.accordion-trigger').forEach(t => t.classList.remove('open'));
+      if (!isOpen) {
+        content.classList.add('open');
+        trigger.classList.add('open');
+      }
+    }
+
+    // ── Rotating Announcement Bar ──
+    (function() {
+      const slides = document.querySelectorAll('.ann-slide');
+      let idx = 0;
+      function syncAnnCountdown(str) { const el = document.getElementById('annCountdown'); if (el) el.textContent = str; }
+      function syncAnnShipping(str)  { const el = document.getElementById('annShipping');  if (el) el.textContent = str; }
+      setInterval(() => {
+        slides[idx].classList.remove('active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('active');
+      }, 4500);
+      window._syncAnn = { countdown: syncAnnCountdown, shipping: syncAnnShipping };
+    })();
+
+    // ── Flash Sale Countdown ──
+    (function() {
+      let total = (Math.floor(Math.random() * 18) + 10) * 60 + Math.floor(Math.random() * 60);
+      function fmt(s) { const m = Math.floor(s/60), sc = s%60; return String(m).padStart(2,'0')+':'+String(sc).padStart(2,'0'); }
+      function tick() {
+        const str = fmt(total);
+        const el = document.getElementById('flashTimer'); if (el) el.textContent = str;
+        if (window._syncAnn) window._syncAnn.countdown(str);
+        total = total > 0 ? total - 1 : (Math.floor(Math.random() * 8) + 12) * 60;
+      }
+      tick(); setInterval(tick, 1000);
+    })();
+
+    // ── Shipping Cutoff Countdown ──
+    (function() {
+      const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      function getDeliveryDay() {
+        const now = new Date(), cutoff = 15;
+        let d = new Date(now); d.setDate(d.getDate() + (now.getHours() >= cutoff ? 2 : 1));
+        while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+        return days[d.getDay()];
+      }
+      function getCutoffSecs() {
+        const now = new Date(), cut = new Date(now); cut.setHours(15,0,0,0);
+        if (now >= cut) { cut.setDate(cut.getDate()+1); cut.setHours(15,0,0,0); }
+        return Math.floor((cut - now) / 1000);
+      }
+      function fmtHM(s) { return Math.floor(s/3600)+'h '+String(Math.floor((s%3600)/60)).padStart(2,'0')+'m'; }
+      const dayName = getDeliveryDay();
+      [document.getElementById('deliveryDay'), document.getElementById('annDeliveryDay')].forEach(el => { if (el) el.textContent = dayName; });
+      let secs = getCutoffSecs();
+      function tickShip() {
+        const str = fmtHM(secs);
+        const el = document.getElementById('shippingTimer'); if (el) el.textContent = str;
+        if (window._syncAnn) window._syncAnn.shipping(str);
+        secs = secs > 0 ? secs - 1 : getCutoffSecs();
+      }
+      tickShip(); setInterval(tickShip, 1000);
+    })();
+
+    // ── Stock Counter ──
+    (function() {
+      let stock = 9, sold = 847;
+      const stockEl = document.getElementById('stockCount'), soldEl = document.getElementById('soldCount'), barEl = document.getElementById('stockBarFill');
+      function updateBar() { if (barEl) barEl.style.width = Math.max(5, Math.round(100 - (stock/312)*100)) + '%'; }
+      updateBar();
+      function scheduleDepletion() {
+        setTimeout(() => {
+          if (stock > 2) { stock--; sold++; }
+          if (stockEl) stockEl.textContent = stock;
+          if (soldEl) soldEl.textContent = sold;
+          updateBar(); scheduleDepletion();
+        }, (Math.floor(Math.random() * 5) + 3) * 60000);
+      }
+      scheduleDepletion();
+    })();
+
+    // ── Live Viewer & Cart Count ──
+    (function() {
+      const rand = (a,b) => Math.floor(Math.random()*(b-a+1))+a;
+      let viewers = rand(28,42), carts = rand(14,22);
+      const vEl = document.getElementById('viewerCount'), cEl = document.getElementById('cartCount');
+      if (vEl) vEl.textContent = viewers; if (cEl) cEl.textContent = carts;
+      setInterval(() => {
+        viewers = Math.max(22, Math.min(48, viewers + rand(-2,2)));
+        carts   = Math.max(10, Math.min(26, carts   + rand(-1,1)));
+        if (vEl) vEl.textContent = viewers; if (cEl) cEl.textContent = carts;
+      }, rand(18000, 32000));
+    })();
+
+    // ── Cart Reservation Timer ──
+    let _resInterval = null;
+    function startCartReservation() {
+      const wrap = document.getElementById('cartReservation'), el = document.getElementById('reservationTimer');
+      if (!wrap || !el) return;
+      wrap.style.display = 'block';
+      let secs = 600;
+      clearInterval(_resInterval);
+      const fmt = s => String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+      el.textContent = fmt(secs);
+      _resInterval = setInterval(() => { secs = secs > 0 ? secs-1 : 600; el.textContent = fmt(secs); }, 1000);
+    }
+
+    // ── Gallery Lightbox ──
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;';
+    lightbox.innerHTML = '<img id="lightboxImg" style="max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px;" />';
+    lightbox.addEventListener('click', () => { lightbox.style.display='none'; document.body.style.overflow=''; });
+    document.body.appendChild(lightbox);
+    document.getElementById('mainGallery').addEventListener('click', e => {
+      const activeImg = document.querySelector('#mainGallery img.active');
+      if (activeImg && !e.target.closest('.gallery-arrow')) {
+        document.getElementById('lightboxImg').src = activeImg.src;
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    });
+    document.getElementById('mainGallery').style.cursor = 'zoom-in';
+
+    // ── Sticky ATC Bar ──
+    const stickyBar = document.createElement('div');
+    stickyBar.id = 'stickyAtc';
+    stickyBar.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:200;transform:translateY(100%);transition:transform 0.3s ease;box-shadow:0 -4px 20px rgba(0,0,0,0.08);';
+    stickyBar.innerHTML = `
+      <div style="display:flex;align-items:center;gap:14px;">
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068" style="width:44px;height:44px;border-radius:3px;object-fit:cover;background:var(--cream-light);" />
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--black);">NutraHarmony® 25-in-1 Menopause</div>
+          <div style="font-size:13px;color:var(--gray);" id="stickyPrice">$35.95 / mo · Subscribe &amp; Save</div>
+        </div>
+      </div>
+      <button onclick="document.querySelector('.atc-btn').click()" style="background:var(--black);color:var(--white);font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:13px 28px;border-radius:3px;border:none;cursor:pointer;white-space:nowrap;">Add to Cart</button>`;
+    document.body.appendChild(stickyBar);
+    const atcBtn = document.querySelector('.atc-btn');
+    const observer = new IntersectionObserver(entries => {
+      stickyBar.style.transform = entries[0].isIntersecting ? 'translateY(100%)' : 'translateY(0)';
+    }, { threshold: 0 });
+    observer.observe(atcBtn);
+
+    // ── Trustpilot Carousel ──
+    let tpIdx = 0;
+    const tpSlides = document.querySelectorAll('.tp-slide');
+    const tpDots = document.querySelectorAll('.tp-dot');
+    function goToSlide(idx) {
+      tpSlides[tpIdx].classList.remove('active');
+      tpDots[tpIdx].classList.remove('active');
+      tpIdx = idx % tpSlides.length;
+      tpSlides[tpIdx].classList.add('active');
+      tpDots[tpIdx].classList.add('active');
+    }
+    setInterval(() => goToSlide(tpIdx + 1), 4000);
+
+    // ── Social Proof Popup ──
+    const popupData = [
+      { name:'Janet from Austin, TX',    bundle:'3-bottle bundle', time:'2 minutes ago' },
+      { name:'Maria from Chicago, IL',   bundle:'2-bottle bundle', time:'4 minutes ago' },
+      { name:'Deborah from Seattle, WA', bundle:'3-bottle bundle', time:'7 minutes ago' },
+      { name:'Susan from Miami, FL',     bundle:'3-bottle bundle', time:'11 minutes ago' },
+      { name:'Carol from Phoenix, AZ',   bundle:'2-bottle bundle', time:'14 minutes ago' },
+      { name:'Patricia from Denver, CO', bundle:'3-bottle bundle', time:'18 minutes ago' },
+      { name:'Linda from Nashville, TN', bundle:'2-bottle bundle', time:'21 minutes ago' },
+      { name:'Sandra from Portland, OR', bundle:'3-bottle bundle', time:'26 minutes ago' },
+    ];
+    let popupIdx = 0;
+
+    function showNextPopup() {
+      const popup = document.getElementById('socialPopup');
+      const d = popupData[popupIdx % popupData.length];
+      popup.classList.remove('hidden');
+      document.getElementById('popupName').textContent = d.name;
+      const actionEl = document.getElementById('popupAction');
+      if (actionEl) actionEl.innerHTML = 'Purchased the <strong>' + d.bundle + '</strong>';
+      document.getElementById('popupTime').textContent = d.time;
+      popupIdx++;
+      setTimeout(() => popup.classList.add('hidden'), 6000);
+    }
+
+    setTimeout(showNextPopup, 3000);
+    setInterval(showNextPopup, 12000);
+
+    // ── Price Increase Countdown ──
+    (function() {
+      let secs = (Math.floor(Math.random() * 60) + 90) * 60; // 90–150 min random
+      const el = document.getElementById('priceIncreaseTimer');
+      function fmt(s) {
+        const h = Math.floor(s / 3600);
+        const m = Math.floor((s % 3600) / 60);
+        const sc = s % 60;
+        return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(sc).padStart(2,'0');
+      }
+      function tick() { if (el) el.textContent = fmt(secs); secs = secs > 0 ? secs - 1 : (90 + Math.floor(Math.random()*60))*60; }
+      tick(); setInterval(tick, 1000);
+    })();
+
+    // ── Last Order Rotation ──
+    (function() {
+      const orders = [
+        { city:'Denver, CO', mins:3 },  { city:'Austin, TX', mins:5 },
+        { city:'Chicago, IL', mins:7 }, { city:'Seattle, WA', mins:11 },
+        { city:'Miami, FL', mins:14 },  { city:'Phoenix, AZ', mins:18 },
+        { city:'Nashville, TN', mins:2 },{ city:'Portland, OR', mins:6 },
+        { city:'Boston, MA', mins:9 },  { city:'Dallas, TX', mins:4 },
+      ];
+      let idx = Math.floor(Math.random() * orders.length);
+      const timeEl = document.getElementById('lastOrderTime');
+      const cityEl = document.getElementById('lastOrderCity');
+      function update() {
+        const o = orders[idx % orders.length];
+        if (timeEl) timeEl.textContent = o.mins + ' minutes ago';
+        if (cityEl) cityEl.textContent = o.city;
+        idx++;
+      }
+      update();
+      setInterval(update, 45000);
+    })();
+
+    // ── Checkout Competition Count ──
+    (function() {
+      const rand = (a,b) => Math.floor(Math.random()*(b-a+1))+a;
+      let count = rand(5, 11);
+      const el = document.getElementById('checkoutCount');
+      if (el) el.textContent = count;
+      setInterval(() => {
+        count = Math.max(3, Math.min(15, count + rand(-1, 1)));
+        if (el) el.textContent = count;
+      }, rand(11000, 24000));
+    })();
+
+    // ── Waitlist Count Fluctuation ──
+    (function() {
+      let count = 847;
+      const el = document.getElementById('waitlistCount');
+      if (el) el.textContent = count;
+      setInterval(() => {
+        count = Math.max(820, count + Math.floor(Math.random() * 3) - 1);
+        if (el) el.textContent = count;
+      }, 30000);
+    })();
+
+    // ── Idle-Tab Title Blinking ──
+    (function() {
+      const original = document.title;
+      const alert = '⚠ Only 9 left — Hurry!';
+      let blinkInterval = null;
+      let toggled = false;
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          blinkInterval = setInterval(() => {
+            document.title = toggled ? original : alert;
+            toggled = !toggled;
+          }, 1500);
+        } else {
+          clearInterval(blinkInterval);
+          document.title = original;
+          toggled = false;
+        }
+      });
+    })();
+
+    // ── Exit Intent Detection ──
+    (function() {
+      const overlay  = document.getElementById('exitOverlay');
+      const countEl  = document.getElementById('exitCountdown');
+      const stockOut = document.getElementById('exitStock');
+      let triggered = false;
+      let exitInterval = null;
+
+      document.addEventListener('mouseleave', (e) => {
+        if (e.clientY <= 5 && !triggered) {
+          triggered = true;
+          // Sync live stock into modal
+          const liveStock = document.getElementById('stockCount');
+          if (liveStock && stockOut) stockOut.textContent = liveStock.textContent;
+          overlay.classList.add('active');
+          // Start 5-min countdown in modal
+          let secs = 299;
+          const fmt = s => String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+          if (countEl) countEl.textContent = fmt(secs);
+          clearInterval(exitInterval);
+          exitInterval = setInterval(() => {
+            secs = secs > 0 ? secs - 1 : 0;
+            if (countEl) countEl.textContent = fmt(secs);
+          }, 1000);
+        }
+      });
+
+      // Click outside modal closes it
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) overlay.classList.remove('active');
+      });
+
+      // Re-arm after 6 minutes so returning users see it again
+      setInterval(() => { triggered = false; }, 360000);
+    })();
+
+    // ── Scroll-Depth Urgency (intensify sticky bar past 70% scroll) ──
+    (function() {
+      const bar = document.getElementById('stickyAtc');
+      if (!bar) return;
+      let intensified = false;
+      window.addEventListener('scroll', () => {
+        const pct = (window.scrollY || document.documentElement.scrollTop) /
+                    (document.documentElement.scrollHeight - window.innerHeight);
+        if (pct > 0.70 && !intensified) {
+          intensified = true;
+          bar.style.background = '#1a0000';
+          bar.style.borderTop = '2px solid var(--red)';
+          const priceEl = document.getElementById('stickyPrice');
+          if (priceEl) {
+            const liveStock = document.getElementById('stockCount');
+            const n = liveStock ? liveStock.textContent : '9';
+            priceEl.innerHTML = '<span style="color:#FF8080;font-weight:700;">⚠ Only ' + n + ' left at this price</span>';
+          }
+          const btn = bar.querySelector('button');
+          if (btn) { btn.style.background = 'var(--red)'; btn.textContent = 'Claim My Spot →'; }
+        } else if (pct < 0.60 && intensified) {
+          intensified = false;
+          bar.style.background = 'var(--white)';
+          bar.style.borderTop = '1px solid var(--border)';
+          const priceEl = document.getElementById('stickyPrice');
+          if (priceEl) priceEl.innerHTML = '$35.95 / mo · Subscribe &amp; Save';
+          const btn = bar.querySelector('button');
+          if (btn) { btn.style.background = 'var(--black)'; btn.textContent = 'Add to Cart'; }
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>
