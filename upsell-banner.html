@@ -28,7 +28,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #f0f0f0;
+      background: linear-gradient(160deg, var(--cream-light) 0%, var(--cream-warm) 50%, #e4d8c2 100%);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -445,7 +445,9 @@
 
       <!-- Urgency strip -->
       <div class="upsell-urgency">
-        <span class="upsell-urgency-icon">🔥</span>
+        <span class="upsell-urgency-icon">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D02E2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </span>
         <span class="upsell-urgency-text">One-time offer · Expires in</span>
         <span class="upsell-urgency-timer" id="upsellTimer">09:47</span>
       </div>
