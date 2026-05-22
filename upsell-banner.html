@@ -3,522 +3,369 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NutraHarmony — Post-Purchase Upsell Banner</title>
+  <title>NutraHarmony — Special Offer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream-light: #FAF8F3;
+      --cream:      #FAF8F3;
       --cream-warm: #F0E9DA;
-      --cream-mid: #E8DEC8;
-      --gold: #C4A83B;
+      --cream-mid:  #E4D8C2;
+      --gold:       #C4A83B;
       --gold-light: #E8D47A;
-      --gold-pale: #FBF6E8;
-      --green: #007F4E;
-      --green-light: #E6F4EE;
-      --black: #1A1A1A;
-      --gray: #6B6B6B;
-      --gray-light: #9A9A9A;
-      --white: #FFFFFF;
-      --red: #D02E2E;
+      --gold-pale:  #FBF6E8;
+      --green:      #007F4E;
+      --green-mid:  #2A9D6F;
+      --green-pale: #C8EAD9;
+      --black:      #1A1A1A;
+      --gray:       #6B6B6B;
+      --white:      #FFFFFF;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(160deg, var(--cream-light) 0%, var(--cream-warm) 50%, #e4d8c2 100%);
+      background: var(--cream);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 16px;
+      padding: 60px 20px;
     }
 
-    /* ── Page wrapper (simulate modal overlay) ── */
-    .upsell-overlay {
-      position: relative;
+    /* ── Page wrapper ── */
+    .wrap {
       width: 100%;
-      max-width: 520px;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
 
-    /* ── Confetti dots backdrop ── */
-    .upsell-overlay::before {
-      content: '';
-      position: absolute;
-      inset: -20px;
-      background-image:
-        radial-gradient(circle, var(--gold) 1.5px, transparent 1.5px),
-        radial-gradient(circle, var(--green) 1px, transparent 1px);
-      background-size: 36px 36px, 18px 18px;
-      background-position: 0 0, 9px 9px;
-      opacity: 0.07;
-      border-radius: 28px;
-      pointer-events: none;
+    /* ── Timer headline ── */
+    .timer-line {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--black);
+      text-align: center;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+    .timer-line .t {
+      color: var(--green);
+      font-variant-numeric: tabular-nums;
     }
 
     /* ── Main card ── */
-    .upsell-card {
-      position: relative;
-      background: var(--white);
-      border-radius: 20px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.06);
-      overflow: hidden;
-    }
-
-    /* ── Top accent bar ── */
-    .upsell-card::before {
-      content: '';
-      display: block;
-      height: 4px;
-      background: linear-gradient(90deg, var(--green) 0%, var(--gold) 60%, var(--gold-light) 100%);
-    }
-
-    /* ── Thank-you header ── */
-    .upsell-header {
-      background: linear-gradient(135deg, var(--cream-light) 0%, var(--cream-warm) 100%);
-      padding: 20px 24px 16px;
-      text-align: center;
-      border-bottom: 1px solid rgba(196,168,59,0.15);
-    }
-    .upsell-header-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--green-light);
-      color: var(--green);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-    }
-    .upsell-header-tag svg { flex-shrink: 0; }
-    .upsell-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--black);
-      line-height: 1.25;
-    }
-    .upsell-header p {
-      font-size: 13px;
-      color: var(--gray);
-      margin-top: 4px;
-    }
-
-    /* ── Body ── */
-    .upsell-body {
-      padding: 20px 24px;
-    }
-
-    /* ── Product row ── */
-    .upsell-product {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      background: var(--cream-light);
-      border: 1.5px solid rgba(196,168,59,0.22);
-      border-radius: 16px;
-      padding: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-    .upsell-product::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 80px; height: 80px;
-      background: radial-gradient(circle at top right, rgba(196,168,59,0.12), transparent 70%);
-    }
-
-    .upsell-product-img {
-      width: 90px;
-      height: 110px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .upsell-product-img img {
+    .card {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.14));
+      border-radius: 28px;
+      background: linear-gradient(140deg,
+        #FBF9F4 0%,
+        #EEE6D2 30%,
+        #C9E8D8 65%,
+        #8ECFB0 100%
+      );
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      min-height: 400px;
+      position: relative;
+      box-shadow: 0 16px 60px rgba(0,0,0,0.10);
     }
 
-    .upsell-product-info {
+    /* ── Card left ── */
+    .card-left {
       flex: 1;
-      min-width: 0;
-    }
-    .upsell-product-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--black);
-      line-height: 1.25;
-      margin-bottom: 4px;
-    }
-    .upsell-product-sub {
-      font-size: 11px;
-      color: var(--gray);
-      margin-bottom: 10px;
+      padding: 52px 44px 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+      z-index: 2;
     }
 
-    /* ── Star row ── */
-    .upsell-stars {
+    .headline-1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .headline-2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--black);
+      line-height: 1.55;
+      max-width: 240px;
+      margin-bottom: 24px;
+      opacity: 0.82;
+    }
+    .card-desc strong { font-weight: 700; }
+
+    /* ── Mini CTA row inside card ── */
+    .mini-cta-row {
       display: flex;
       align-items: center;
-      gap: 4px;
-      margin-bottom: 8px;
+      gap: 10px;
     }
-    .upsell-stars svg { color: var(--gold); }
-    .upsell-stars span {
-      font-size: 11px;
-      color: var(--gray);
-      font-weight: 500;
-    }
-
-    /* ── Price ── */
-    .upsell-price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-    .upsell-price-new {
-      font-size: 22px;
+    .mini-btn {
+      background: var(--white);
+      border: 1.5px solid rgba(0,0,0,0.18);
+      color: var(--black);
+      font-size: 10px;
       font-weight: 800;
-      color: var(--green);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
     }
-    .upsell-price-old {
-      font-size: 14px;
-      color: var(--gray-light);
-      text-decoration: line-through;
-    }
-    .upsell-price-save {
+    .mini-badge {
+      background: var(--gold);
+      color: var(--white);
       font-size: 11px;
       font-weight: 700;
-      color: var(--red);
-      background: rgba(208,46,46,0.08);
-      padding: 2px 7px;
+      padding: 6px 12px;
       border-radius: 20px;
-    }
-
-    /* ── Benefit pills ── */
-    .upsell-benefits {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 16px 0 14px;
-    }
-    .upsell-benefit {
       display: flex;
       align-items: center;
       gap: 5px;
-      background: var(--cream-warm);
-      border: 1px solid rgba(196,168,59,0.2);
-      border-radius: 20px;
-      padding: 5px 11px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--black);
-    }
-    .upsell-benefit span.dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
+      white-space: nowrap;
     }
 
-    /* ── Urgency strip ── */
-    .upsell-urgency {
+    /* ── Card right ── */
+    .card-right {
+      flex: 0 0 320px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      background: linear-gradient(90deg, rgba(208,46,46,0.06) 0%, rgba(208,46,46,0.1) 50%, rgba(208,46,46,0.06) 100%);
-      border: 1px solid rgba(208,46,46,0.18);
-      border-radius: 10px;
-      padding: 9px 14px;
-      margin-bottom: 16px;
-    }
-    .upsell-urgency-icon {
-      font-size: 15px;
-      animation: pulseIcon 1.6s ease-in-out infinite;
-    }
-    @keyframes pulseIcon {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.18); }
-    }
-    .upsell-urgency-text {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--red);
-    }
-    .upsell-urgency-timer {
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--red);
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 0.04em;
+      position: relative;
+      padding: 32px 20px;
     }
 
-    /* ── CTA ── */
-    .upsell-cta {
-      width: 100%;
-      background: linear-gradient(135deg, #007F4E 0%, #00a362 100%);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      padding: 16px 24px;
-      cursor: pointer;
+    /* glowing circle */
+    .product-circle {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%,
+        rgba(255,255,255,0.92) 0%,
+        rgba(200,234,217,0.65) 60%,
+        rgba(142,207,176,0.3) 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .product-circle img {
+      width: 160px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 28px rgba(0,0,0,0.20));
+      position: relative;
+      z-index: 2;
+    }
+
+    /* sparkles */
+    .spark {
+      position: absolute;
+      color: var(--gold);
+      font-size: 0;
+      z-index: 1;
+    }
+    .spark svg { display: block; }
+
+    .spark-1 { top: 14px;  left: 26px;  }
+    .spark-2 { top: 22px;  right: 40px; }
+    .spark-3 { bottom: 22px; left: 18px;  }
+    .spark-4 { bottom: 30px; right: 28px; }
+    .spark-5 { top: 50%;  left: -10px; transform: translateY(-50%); }
+
+    /* ── Social proof ── */
+    .social-row {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      letter-spacing: 0.02em;
-      box-shadow: 0 6px 22px rgba(0,127,78,0.35), 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      margin-top: 22px;
+      margin-bottom: 18px;
+      font-size: 16px;
+      color: var(--black);
+      flex-wrap: wrap;
+    }
+    .social-row strong { font-weight: 800; }
+    .stars { display: flex; gap: 2px; }
+    .stars svg { color: var(--gold); }
+    .review-count { font-weight: 700; font-size: 16px; color: var(--black); }
+
+    /* ── Main CTA button ── */
+    .main-cta {
+      width: 100%;
+      background: var(--green);
+      color: var(--white);
+      font-size: 20px;
+      font-weight: 500;
+      border: none;
+      border-radius: 10px;
+      padding: 20px 32px;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      box-shadow: 0 4px 18px rgba(0,127,78,0.38);
+      transition: transform 0.16s, box-shadow 0.16s;
       position: relative;
       overflow: hidden;
     }
-    .upsell-cta::after {
+    .main-cta::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 55%);
+      pointer-events: none;
     }
-    .upsell-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0,127,78,0.42), 0 3px 8px rgba(0,0,0,0.12);
-    }
-    .upsell-cta:active { transform: translateY(0); }
-    .upsell-cta-icon {
-      width: 20px; height: 20px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      font-size: 12px;
-    }
-    .upsell-cta-sub {
-      display: block;
-      font-size: 10px;
-      font-weight: 500;
-      opacity: 0.82;
-      margin-top: 2px;
-      letter-spacing: 0.01em;
-    }
+    .main-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(0,127,78,0.44); }
+    .main-cta strong { font-weight: 800; }
 
-    /* ── Decline link ── */
-    .upsell-decline {
-      text-align: center;
-      margin-top: 12px;
-    }
-    .upsell-decline a {
-      font-size: 12px;
-      color: var(--gray-light);
-      text-decoration: none;
-      border-bottom: 1px dotted var(--gray-light);
-      transition: color 0.15s;
-    }
-    .upsell-decline a:hover { color: var(--gray); }
-
-    /* ── Trust badges ── */
-    .upsell-trust {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 14px 24px;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      background: var(--cream-light);
-    }
-    .upsell-trust-item {
+    /* ── Guarantee row ── */
+    .guarantee {
       display: flex;
       align-items: center;
-      gap: 5px;
-      font-size: 10px;
-      font-weight: 600;
+      gap: 7px;
+      margin-top: 14px;
+      font-size: 15px;
+      font-style: italic;
       color: var(--gray);
-      text-align: center;
     }
-    .upsell-trust-item svg { color: var(--gold); flex-shrink: 0; }
+    .guarantee svg { flex-shrink: 0; color: var(--gray); }
 
-    /* ── Social proof strip ── */
-    .upsell-social {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 24px 18px;
+    /* ── Sparkle SVG ── */
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+      50%       { opacity: 0.5; transform: scale(0.75) rotate(20deg); }
     }
-    .upsell-avatars {
-      display: flex;
-      margin-right: 2px;
-    }
-    .upsell-avatar {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      border: 2px solid white;
-      margin-left: -8px;
-      object-fit: cover;
-      overflow: hidden;
-      background: var(--cream-warm);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--green);
-      flex-shrink: 0;
-    }
-    .upsell-avatar:first-child { margin-left: 0; }
-    .upsell-social-text {
-      font-size: 11px;
-      color: var(--gray);
-      line-height: 1.4;
-    }
-    .upsell-social-text strong {
-      color: var(--black);
-      font-weight: 700;
-    }
-
+    .spark svg { animation: twinkle 2.4s ease-in-out infinite; }
+    .spark-2 svg { animation-delay: 0.6s; }
+    .spark-3 svg { animation-delay: 1.2s; }
+    .spark-4 svg { animation-delay: 1.8s; }
+    .spark-5 svg { animation-delay: 0.9s; }
   </style>
 </head>
 <body>
 
-<div class="upsell-overlay">
-  <div class="upsell-card">
+<div class="wrap">
 
-    <!-- Top accent bar via ::before -->
+  <!-- Timer headline -->
+  <p class="timer-line">
+    Before you go! You qualify for a special offer for the next <span class="t" id="timerDisplay">09:59</span>…
+  </p>
 
-    <!-- Header -->
-    <div class="upsell-header">
-      <div class="upsell-header-tag">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Order Confirmed!
+  <!-- Main card -->
+  <div class="card">
+
+    <!-- Left: text -->
+    <div class="card-left">
+      <div class="headline-1">Stay consistent</div>
+      <div class="headline-2">and feel your best!</div>
+      <p class="card-desc">For the best results, your body needs <strong>a full 90-day</strong> hormonal balance protocol.</p>
+      <div class="mini-cta-row">
+        <button class="mini-btn">CONTINUE YOUR PROTOCOL</button>
+        <span class="mini-badge">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          30% OFF
+        </span>
       </div>
-      <h2>One Last Thing Before You Go</h2>
-      <p>Customers who see the best results always grab this add-on.</p>
     </div>
 
-    <!-- Body -->
-    <div class="upsell-body">
-
-      <!-- Product row -->
-      <div class="upsell-product">
-        <div class="upsell-product-img">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068"
-            alt="NutraHarmony 15-in-1 Menopause"
-          />
-        </div>
-        <div class="upsell-product-info">
-          <div class="upsell-product-name">NutraHarmony 15-in-1 Menopause</div>
-          <div class="upsell-product-sub">90-day supply · Full protocol dose</div>
-          <div class="upsell-stars">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#C4A83B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#C4A83B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#C4A83B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#C4A83B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#C4A83B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <span>4.9 · 2,847 reviews</span>
-          </div>
-          <div class="upsell-price-row">
-            <span class="upsell-price-new">$29.99</span>
-            <span class="upsell-price-old">$49.99</span>
-            <span class="upsell-price-save">Save 40%</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Benefit pills -->
-      <div class="upsell-benefits">
-        <div class="upsell-benefit"><span class="dot"></span>Full 90-day hormone protocol</div>
-        <div class="upsell-benefit"><span class="dot"></span>Bigger dose · Faster results</div>
-        <div class="upsell-benefit"><span class="dot"></span>Added to your existing order</div>
-        <div class="upsell-benefit"><span class="dot"></span>Ships together · No extra fee</div>
-      </div>
-
-      <!-- Urgency strip -->
-      <div class="upsell-urgency">
-        <span class="upsell-urgency-icon">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D02E2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </span>
-        <span class="upsell-urgency-text">One-time offer · Expires in</span>
-        <span class="upsell-urgency-timer" id="upsellTimer">09:47</span>
-      </div>
-
-      <!-- CTA -->
-      <button class="upsell-cta">
-        <span class="upsell-cta-icon">+</span>
-        <span>
-          Yes, Add to My Order — $29.99
-          <span class="upsell-cta-sub">One click · Ships with your order · No extra charge</span>
+    <!-- Right: product in circle -->
+    <div class="card-right">
+      <div class="product-circle">
+        <!-- sparkles -->
+        <span class="spark spark-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 7.2 7.2 1.8-7.2 1.8-1.8 7.2-1.8-7.2-7.2-1.8 7.2-1.8z"/></svg>
         </span>
-      </button>
+        <span class="spark spark-2">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 7.2 7.2 1.8-7.2 1.8-1.8 7.2-1.8-7.2-7.2-1.8 7.2-1.8z"/></svg>
+        </span>
+        <span class="spark spark-3">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 7.2 7.2 1.8-7.2 1.8-1.8 7.2-1.8-7.2-7.2-1.8 7.2-1.8z"/></svg>
+        </span>
+        <span class="spark spark-4">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 7.2 7.2 1.8-7.2 1.8-1.8 7.2-1.8-7.2-7.2-1.8 7.2-1.8z"/></svg>
+        </span>
+        <span class="spark spark-5">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 7.2 7.2 1.8-7.2 1.8-1.8 7.2-1.8-7.2-7.2-1.8 7.2-1.8z"/></svg>
+        </span>
 
-      <!-- Social proof -->
-      <div class="upsell-social" style="margin-top:14px;">
-        <div class="upsell-avatars">
-          <div class="upsell-avatar">S</div>
-          <div class="upsell-avatar">M</div>
-          <div class="upsell-avatar">J</div>
-          <div class="upsell-avatar" style="font-size:9px;color:#999;">+</div>
-        </div>
-        <div class="upsell-social-text"><strong>1,204 customers</strong> added this to their order this week</div>
-      </div>
-
-      <!-- Decline -->
-      <div class="upsell-decline">
-        <a href="#">No thanks, I don't want the discount</a>
-      </div>
-
-    </div><!-- /body -->
-
-    <!-- Trust bar -->
-    <div class="upsell-trust">
-      <div class="upsell-trust-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Secure Checkout
-      </div>
-      <div class="upsell-trust-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        Ships in 24 hrs
-      </div>
-      <div class="upsell-trust-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-        60-Day Guarantee
+        <img
+          src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/71XTtIVq3nL._SL1500__21.png?v=1778769068"
+          alt="NutraHarmony 15-in-1 Menopause"
+        />
       </div>
     </div>
 
   </div><!-- /card -->
-</div><!-- /overlay -->
+
+  <!-- Social proof -->
+  <div class="social-row">
+    <span><strong>1,204+</strong> customers accepted this offer</span>
+    <div class="stars">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <span class="review-count">4.9 | 2,847 Reviews</span>
+  </div>
+
+  <!-- Big CTA -->
+  <button class="main-cta">
+    Continue My Protocol &amp; <strong>Save 30%</strong>
+  </button>
+
+  <!-- Guarantee -->
+  <div class="guarantee">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    60-day satisfaction guarantee
+  </div>
+
+</div>
 
 <script>
-  (function() {
-    const KEY = 'upsellTimerExpiry';
-    let expiry = parseInt(sessionStorage.getItem(KEY) || '0');
-    if (!expiry || expiry <= Date.now()) {
-      expiry = Date.now() + 10 * 60 * 1000; // 10 minutes
-      sessionStorage.setItem(KEY, expiry);
-    }
-
-    const el = document.getElementById('upsellTimer');
-
-    function tick() {
-      const remaining = Math.max(0, expiry - Date.now());
-      const m = Math.floor(remaining / 60000);
-      const s = Math.floor((remaining % 60000) / 1000);
-      el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-      if (remaining > 0) requestAnimationFrame(tick);
-      else el.textContent = '00:00';
-    }
-    tick();
-  })();
+(function () {
+  const KEY = 'nhUpsellExpiry';
+  let exp = parseInt(sessionStorage.getItem(KEY) || '0');
+  if (!exp || exp <= Date.now()) {
+    exp = Date.now() + 10 * 60 * 1000;
+    sessionStorage.setItem(KEY, exp);
+  }
+  const el = document.getElementById('timerDisplay');
+  function tick() {
+    const left = Math.max(0, exp - Date.now());
+    const m = Math.floor(left / 60000);
+    const s = Math.floor((left % 60000) / 1000);
+    el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    if (left > 0) requestAnimationFrame(tick);
+  }
+  tick();
+})();
 </script>
 </body>
 </html>
