@@ -878,9 +878,10 @@
     .bi-lbl-arms   { top: 36%; width: 48%; }
     .bi-lbl-tummy  { top: 55%; width: 48%; }
     .bi-lbl-thighs { top: 72%; width: 48%; }
-    .bi-benefits { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-    .bi-benefit { background: rgba(255,255,255,0.7); border-radius: 4px; padding: 8px 10px; font-size: 11px; font-weight: 600; color: var(--black); display: flex; align-items: center; gap: 6px; }
-    .bi-benefit svg { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; }
+    .body-infographic::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 42%; background: linear-gradient(to top, rgba(0,0,0,0.52) 0%, transparent 100%); pointer-events: none; border-radius: 0 0 6px 6px; }
+    .bi-benefits { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 12px; z-index: 2; }
+    .bi-benefit { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 6px; padding: 8px 10px; font-size: 11px; font-weight: 700; color: var(--white); display: flex; align-items: center; gap: 6px; }
+    .bi-benefit svg { width: 14px; height: 14px; color: var(--white); flex-shrink: 0; }
 
     /* ── Amber Testimonial Card ── */
     .amber-testimonial {
@@ -1673,54 +1674,12 @@
       </div>
       <!-- Body Infographic -->
       <div class="body-infographic">
-        <div class="bi-inner">
-          <!-- Body SVG -->
-          <div class="bi-svg">
-            <svg viewBox="0 0 60 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Head -->
-              <circle cx="30" cy="10" r="8" stroke="#0B0B0B" stroke-width="1.5" fill="rgba(196,168,59,0.2)"/>
-              <!-- Neck -->
-              <rect x="27" y="18" width="6" height="6" rx="1" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1"/>
-              <!-- Torso -->
-              <path d="M18 24 Q12 28 12 38 L12 70 Q12 74 16 74 L44 74 Q48 74 48 70 L48 38 Q48 28 42 24 Z" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1.5"/>
-              <!-- Left arm -->
-              <path d="M18 26 Q8 32 7 48 Q6 56 10 60" stroke="#0B0B0B" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-              <ellipse cx="10" cy="62" rx="4" ry="4" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1"/>
-              <!-- Right arm -->
-              <path d="M42 26 Q52 32 53 48 Q54 56 50 60" stroke="#0B0B0B" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-              <ellipse cx="50" cy="62" rx="4" ry="4" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1"/>
-              <!-- Left leg -->
-              <path d="M22 74 L20 100 L18 120" stroke="#0B0B0B" stroke-width="1.5" stroke-linecap="round"/>
-              <ellipse cx="18" cy="122" rx="4" ry="3" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1"/>
-              <!-- Right leg -->
-              <path d="M38 74 L40 100 L42 120" stroke="#0B0B0B" stroke-width="1.5" stroke-linecap="round"/>
-              <ellipse cx="42" cy="122" rx="4" ry="3" fill="rgba(196,168,59,0.15)" stroke="#0B0B0B" stroke-width="1"/>
-            </svg>
-          </div>
-          <!-- Labels -->
-          <div class="bi-label left bi-lbl-chest">
-            <div class="bi-tag">Chest</div>
-            <div class="bi-line"></div>
-          </div>
-          <div class="bi-label right bi-lbl-arms">
-            <div class="bi-tag">Arms</div>
-            <div class="bi-line"></div>
-          </div>
-          <div class="bi-label left bi-lbl-tummy">
-            <div class="bi-tag">Tummy</div>
-            <div class="bi-line"></div>
-          </div>
-          <div class="bi-label left bi-lbl-thighs">
-            <div class="bi-tag">Thighs</div>
-            <div class="bi-line"></div>
-          </div>
-          <!-- Benefits grid -->
-          <div class="bi-benefits">
-            <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hot flash relief</div>
-            <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Mood balance</div>
-            <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Gut support</div>
-            <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Energy boost</div>
-          </div>
+        <img src="https://cdn.shopify.com/s/files/1/0759/6228/6390/files/711C0jLwkaL._AC_SL1500.jpg?v=1764179982" alt="Specially Made For Her — NutraHarmony Menopause Supplement" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="bi-benefits">
+          <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hot flash relief</div>
+          <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Mood balance</div>
+          <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Gut support</div>
+          <div class="bi-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Energy boost</div>
         </div>
       </div>
     </div>
