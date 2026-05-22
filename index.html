@@ -1293,6 +1293,99 @@
     }
     .exit-atc:hover { background: #2a2a2a; }
     .exit-guarantee { font-size: 12px; color: var(--gray); }
+    /* ── Flash Countdown Banner ── */
+    @keyframes bannerReveal {
+      from { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
+      to   { max-height: 90px; opacity: 1; padding-top: 13px; padding-bottom: 13px; }
+    }
+    @keyframes badgePulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(208,46,46,0.55); }
+      50%      { box-shadow: 0 0 0 6px rgba(208,46,46,0); }
+    }
+    .flash-countdown-banner {
+      background: linear-gradient(90deg, #160000 0%, #2a0404 50%, #160000 100%);
+      border-bottom: 2px solid var(--red);
+      padding: 13px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      animation: bannerReveal 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+      overflow: hidden;
+      position: relative;
+      z-index: 90;
+    }
+    .flash-badge {
+      background: var(--red);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 4px;
+      white-space: nowrap;
+      animation: badgePulse 2s ease infinite;
+    }
+    .flash-msg {
+      color: rgba(255,255,255,0.65);
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      font-family: var(--sans);
+    }
+    .flash-timer {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .flash-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 6px;
+      padding: 5px 11px;
+      min-width: 54px;
+    }
+    .flash-num {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      font-family: var(--sans);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+    .flash-lbl {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .flash-sep {
+      font-size: 22px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.3);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .flash-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      white-space: nowrap;
+      font-family: var(--sans);
+    }
+    @media (max-width: 600px) {
+      .flash-sub { display: none; }
+      .flash-unit { min-width: 44px; padding: 4px 8px; }
+      .flash-num { font-size: 20px; }
+      .flash-countdown-banner { gap: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -1344,6 +1437,29 @@
       <li><a href="#">FAQs</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
+  </div>
+
+  <!-- ── Flash Countdown Banner ── -->
+  <div class="flash-countdown-banner" id="flashCountdownBanner">
+    <span class="flash-badge">⚡ Limited Time Offer</span>
+    <span class="flash-msg">Sale ends in</span>
+    <div class="flash-timer">
+      <div class="flash-unit">
+        <span class="flash-num" id="fcHours">02</span>
+        <span class="flash-lbl">Hrs</span>
+      </div>
+      <span class="flash-sep">:</span>
+      <div class="flash-unit">
+        <span class="flash-num" id="fcMins">18</span>
+        <span class="flash-lbl">Min</span>
+      </div>
+      <span class="flash-sep">:</span>
+      <div class="flash-unit">
+        <span class="flash-num" id="fcSecs">47</span>
+        <span class="flash-lbl">Sec</span>
+      </div>
+    </div>
+    <span class="flash-sub">Save 15% — resets at midnight</span>
   </div>
 
   <!-- ── Hero Section ── -->
@@ -2519,6 +2635,34 @@
           if (btn) { btn.style.background = 'var(--black)'; btn.textContent = 'Add to Cart'; }
         }
       }, { passive: true });
+    })();
+
+    // ── Flash Countdown Banner ──
+    (function(){
+      const KEY = 'fcBannerExpiry';
+      let expiry = parseInt(sessionStorage.getItem(KEY) || '0');
+      if (!expiry || expiry <= Date.now()) {
+        // randomise start between 1h45m and 2h30m so it feels real each session
+        const mins = 105 + Math.floor(Math.random() * 45);
+        expiry = Date.now() + mins * 60 * 1000;
+        sessionStorage.setItem(KEY, expiry);
+      }
+      const hEl = document.getElementById('fcHours');
+      const mEl = document.getElementById('fcMins');
+      const sEl = document.getElementById('fcSecs');
+      function pad(n){ return String(n).padStart(2,'0'); }
+      function tick(){
+        const diff = Math.max(0, expiry - Date.now());
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        if(hEl) hEl.textContent = pad(h);
+        if(mEl) mEl.textContent = pad(m);
+        if(sEl) sEl.textContent = pad(s);
+        if(diff === 0){ clearInterval(iv); }
+      }
+      tick();
+      const iv = setInterval(tick, 1000);
     })();
   </script>
 
